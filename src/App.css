@@ -1,0 +1,238 @@
+:root {
+  --primary: #3b82f6;
+  --primary-dark: #2563eb;
+  --dark-blue: #1e293b;
+  --light-gray: #f1f5f9;
+  --text-dark: #0f172a;
+  --text-light: #64748b;
+  --white: #ffffff;
+  --black: #000000;
+  --success: #10b981;
+  --danger: #ef4444;
+  --warning: #f59e0b;
+  --border-color: #e2e8f0;
+  --card-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --transition: all 0.3s ease;
+}
+
+body {
+  font-family: "Inter", sans-serif;
+  color: var(--text-dark);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+a {
+  color: var(--primary);
+  text-decoration: none;
+  transition: var(--transition);
+}
+
+a:hover {
+  color: var(--primary-dark);
+}
+
+/*Hero Section*/
+.hero {
+  padding: 8rem 0 5rem;
+  background-color: var(--white);
+}
+
+.hero-content h1 {
+  margin-bottom: 1.5rem;
+}
+
+.hero-img-container {
+  position: relative;
+  z-index: 1;
+}
+
+.hero-img {
+  border: 8px solid var(--white);
+  box-shadow: var(--card-shadow);
+}
+
+/*About Section*/
+.about-img {
+  box-shadow: var(--card-shadow);
+}
+
+/*Skills Section*/
+.skill-card {
+  background-color: var(--white);
+  border-radius: 10px;
+  padding: 2rem;
+  height: 100%;
+  box-shadow: var(--card-shadow);
+  transition: var(--transition);
+}
+
+.skill-card:hover {
+  transform: translateY(-5px);
+}
+
+.skill-icon {
+  font-size: 2.5rem;
+  color: var(--primary);
+  margin-bottom: 1.5rem;
+}
+
+.skill-tags {
+  margin-top: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+/*Portfolio Section*/
+.portfolio-item {
+  border: none;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: var(--card-shadow);
+  transition: var(--transition);
+}
+
+.portfolio-item:hover {
+  transform: translateY(-5px);
+}
+
+.portfolio-item .card-img-top {
+  height: 200px;
+  object-fit: cover;
+}
+
+/*Testimonials Section*/
+.testimonial-card {
+  background-color: var(--white);
+  border-radius: 10px;
+  padding: 2rem;
+  height: 100%;
+  box-shadow: var(--card-shadow);
+}
+
+.testimonial-rating {
+  color: var(--warning);
+}
+
+.testimonial-text {
+  font-style: italic;
+  color: var(--text-light);
+}
+
+.testimonial-author img {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+}
+
+/*Contact Section*/
+.contact-card {
+  background-color: var(--white);
+  border-radius: 10px;
+  padding: 2rem;
+  box-shadow: var(--card-shadow);
+}
+
+.contact-info {
+  padding: 1.5rem;
+  background-color: var(--white);
+  border-radius: 10px;
+  box-shadow: var(--card-shadow);
+  height: 100%;
+}
+
+.contact-icon {
+  font-size: 2rem;
+  color: var(--primary);
+  margin-bottom: 1rem;
+}
+
+/*Footer*/
+.footer {
+  background-color: var(--dark-blue);
+  color: var(--white);
+}
+
+.footer-links li {
+  margin-bottom: 0.75rem;
+}
+
+.footer-links a,
+.footer-contact a {
+  color: var(--light-gray);
+  transition: var(--transition);
+}
+
+.footer-links a:hover,
+.footer-contact a:hover {
+  color: var(--primary);
+  text-decoration: none;
+}
+
+.social-icons a {
+  color: var(--white);
+  font-size: 1.25rem;
+  transition: var(--transition);
+}
+
+.social-icons a:hover {
+  color: var(--primary);
+}
+
+/*Auth Pages*/
+.auth-page {
+  background-color: var(--light-gray);
+  min-height: 100vh;
+}
+
+.auth-card {
+  background-color: var(--white);
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: var(--card-shadow);
+}
+
+.auth-card .card-header {
+  background-color: var(--white);
+  padding: 1.5rem;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.auth-card .card-body {
+  padding: 2rem;
+}
+
+.auth-card .card-footer {
+  background-color: var(--white);
+  padding: 1.5rem;
+  border-top: 1px solid var(--border-color);
+}
+
+.social-btn {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.75rem;
+}
+
+.toggle-password {
+  cursor: pointer;
+}
+
+/*Project Request Page*/
+.project-request-section {
+  padding-top: 4rem;
+  background-color: var(--light-gray);
+  min-height: 100vh;
+}
+
+.project-request-card {
+  background-color: var(--white);
+  border-radius: 10px;
+  padding: 2rem;
+  box-shadow: var(--card-shadow);
+  margin-bottom: 3rem;
+}
