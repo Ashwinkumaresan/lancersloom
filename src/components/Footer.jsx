@@ -9,7 +9,7 @@ const Footer = () => {
         <Row>
           <Col lg={4} className="mb-4 mb-lg-0">
             <h4 className="text-white mb-4">
-              Free<span className="text-primary">lancer's</span>
+              Lancers<span className="text-primary">Loom</span>
             </h4>
             <p className="text-white-50 mb-4">
               Freelance Web Developer & Designer specializing in creating beautiful, functional websites and

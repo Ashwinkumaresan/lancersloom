@@ -33,7 +33,7 @@ const Navbar = () => {
     >
       <Container>
         <BootstrapNavbar.Brand as={Link} to="/" className="fw-bold">
-          Free<span className="text-primary">lancer's</span>
+          Lancers<span className="text-primary">Loom</span>
         </BootstrapNavbar.Brand>
         <BootstrapNavbar.Toggle aria-controls="basic-navbar-nav" />
         <BootstrapNavbar.Collapse id="basic-navbar-nav">
