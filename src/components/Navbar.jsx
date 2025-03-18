@@ -44,8 +44,10 @@ const Navbar = () => {
             <a href="#portfolio" class="nav-link">Portfolio</a>
             <a href="#testimonials" class="nav-link">Testimonials</a>
             <a href="#contact" class="nav-link">Contact</a>
-            <a href="/login">
-            <button className='btn btn-primary text-white ms-lg-3 px-4'>Login</button></a>
+            <Link to="/login" className="text-primary">
+            <button className='btn btn-primary text-white ms-lg-3 px-4'>Login</button>
+                    
+                  </Link>
           </Nav>
         </BootstrapNavbar.Collapse>
       </Container>
