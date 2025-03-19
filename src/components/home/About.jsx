@@ -1,20 +1,28 @@
 import { Container, Row, Col } from "react-bootstrap"
 import { Link } from "react-router-dom"
 import { FaCheckCircle, FaCertificate } from "react-icons/fa"
+// import Aos from "aos";
+
 
 const About = () => {
+  // Aos.init({
+  //   duration: 1100,   // Animation duration in milliseconds
+  //   offset: 600,      // Offset from the original trigger point
+  //   delay: 200,       // Delay before animation starts
+  //   once: true        // Whether the animation should happen only once
+  // });
   return (
     <section id="about" className="py-5 bg-light mb-5">
       <Container>
-        <Row className="align-items-center">
-          <Col lg={5} className="mb-4 mb-lg-0">
+        <Row className="align-items-center ">
+          <Col lg={5} className="mb-4 mb-lg-0" >
             <img
-              src="Hero.png"
+              src="About.png"
               alt="About"
               className="img-fluid rounded about-img"
             />
           </Col>
-          <Col lg={7}>
+          <Col lg={7} >
             <h2 className="section-heading mb-4">About Us</h2>
             <p className="fs-6">
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus ratione repellat, optio aspernatur obcaecati odit laboriosam nulla labore nemo numquam.

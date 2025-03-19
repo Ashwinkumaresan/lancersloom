@@ -27,7 +27,9 @@ const Navbar = () => {
       expand="lg" 
       fixed="top" 
       className={`navbar ${scrolled ? 'scrolled' : ''}`}
-      style={{backdropFilter:("blur(8px)"),
+      style={{
+        backdropFilter:("blur(8px)"),
+        WebkitBackdropFilter:"blur(8px) ",
         background:"transparent",
       }}
     >

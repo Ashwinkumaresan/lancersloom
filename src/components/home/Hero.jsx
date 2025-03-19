@@ -1,13 +1,21 @@
 import { Container, Row, Col } from "react-bootstrap"
 import { Link } from "react-router-dom"
+// import Aos from "aos";
 
 const Hero = () => {
+  // Aos.init({
+  //   duration: 1000,   // Animation duration in milliseconds
+  //   offset: 300,      // Offset from the original trigger point
+  //   delay: 100,       // Delay before animation starts
+  //   once: true        // Whether the animation should happen only once
+  // });
+  
   return (
     <section id="home" className="hero d-flex align-items-center">
       <Container>
         <Row className="align-items-center">
-          <Col lg={6} className="hero-content">
-            <h1 className="display-2 fw-bold mb-3">Freelance Web Developement & Designing</h1>
+          <Col lg={6} className="hero-content" >
+            <h1 className="display-3 fw-bold mb-3">Freelance Web Developement & Designing</h1>
             <p className="lead mb-4 fs-6">
               Crafting beautiful, functional websites and applications that drive business growth.
             </p>
@@ -20,7 +28,7 @@ const Hero = () => {
               </a>
             </div>
           </Col>
-          <Col lg={6} className="text-center mt-5 mt-md-0">
+          <Col lg={6} className="text-center mt-5 mt-md-0"  >
             <div className="hero-img-container">
               <img
                 src="Hero.png"

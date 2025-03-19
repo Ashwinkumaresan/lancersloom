@@ -42,21 +42,6 @@ a:hover {
   margin-bottom: 1.5rem;
 }
 
-.hero-img-container {
-  position: relative;
-  z-index: 1;
-}
-
-.hero-img {
-  border: 8px solid var(--white);
-  box-shadow: var(--card-shadow);
-}
-
-/*About Section*/
-.about-img {
-  box-shadow: var(--card-shadow);
-}
-
 /*Skills Section*/
 .skill-card {
   background-color: var(--white);
