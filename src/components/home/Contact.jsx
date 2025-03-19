@@ -95,38 +95,6 @@ const Contact = () => {
             </div>
           </Col>
         </Row>
-
-        <Row className="mt-5">
-          <Col md={4} className="text-center mb-4 mb-md-0">
-            <div className="contact-info">
-              <FaEnvelope className="contact-icon" />
-              <h4>Email</h4>
-              <p>
-                <a href="mailto:john@example.com" className="text-decoration-none">
-                  achusuchu123@gmail.com
-                </a>
-              </p>
-            </div>
-          </Col>
-          <Col md={4} className="text-center mb-4 mb-md-0">
-            <div className="contact-info">
-              <FaPhone className="contact-icon" />
-              <h4>Phone</h4>
-              <p>
-                <a href="tel:+1234567890" className="text-decoration-none">
-                  +91 9345857852
-                </a>
-              </p>
-            </div>
-          </Col>
-          <Col md={4} className="text-center">
-            <div className="contact-info">
-              <FaMapMarkerAlt className="contact-icon" />
-              <h4>Location</h4>
-              <p>Tamil Nadu, India</p>
-            </div>
-          </Col>
-        </Row>
       </Container>
     </section>
   )

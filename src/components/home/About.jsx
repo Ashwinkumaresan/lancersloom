@@ -53,7 +53,7 @@ const About = () => {
                 </ul>
               </Col> */}
             </Row>
-            <div className="row">
+            <div className="row p-2 p-md-0">
                 <Link to="/project-request" className="btn btn-primary col">
                 Need a Project
                 </Link>

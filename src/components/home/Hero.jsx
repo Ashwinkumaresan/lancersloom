@@ -7,15 +7,15 @@ const Hero = () => {
       <Container>
         <Row className="align-items-center">
           <Col lg={6} className="hero-content">
-            <h1 className="display-4 fw-bold mb-3">Freelance Web Developement & Designing</h1>
-            <p className="lead mb-4">
+            <h1 className="display-2 fw-bold mb-3">Freelance Web Developement & Designing</h1>
+            <p className="lead mb-4 fs-6">
               Crafting beautiful, functional websites and applications that drive business growth.
             </p>
-            <div className="d-flex gap-3">
-              <Link to="/project-request" className="btn btn-primary py-2">
+            <div className="d-flex gap-3 row p-2 p-md-0">
+              <Link to="/project-request" className="col-12 col-lg-6 btn btn-primary py-2">
                 Need Projects?
               </Link>
-              <a href="#portfolio" className="btn btn-outline-dark py-2">
+              <a href="#portfolio" className="col btn btn-outline-dark py-2">
                 View Our Work
               </a>
             </div>
