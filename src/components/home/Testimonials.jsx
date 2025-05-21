@@ -29,7 +29,7 @@ const Testimonials = () => {
   return (
     <section id="testimonials" className="py-5 bg-light">
       <Container>
-        <Row className="text-center mb-5">
+        <Row className="text-center my-5">
           <Col lg={8} className="mx-auto">
             <h2 className="section-heading">Client Testimonials</h2>
             <p className="text-muted">What my clients say about working with us</p>

@@ -9,17 +9,21 @@ import Login from './pages/Login';
 import Signup from './pages/Signup';
 import ProjectRequest from './pages/ProjectRequest';
 import { Home } from './pages/HOme';
+import { SigunupOTP } from './pages/SigunupOTP';
+import { Signup_password } from './pages/Signup_password';
 
 function App() {
 
   return (
     <>
       <BrowserRouter>
-      <Navbar />
+      
         <Routes>
           <Route path="/" element={ <Home/> } />
           <Route path="/login" element={ <Login/> } />
           <Route path="/signup" element={ <Signup/> } />
+          <Route path="/signup-otp" element={ <SigunupOTP/> } />
+          <Route path="/signup-set-password" element={ <Signup_password/> } />
           <Route path="/project-request" element={ <ProjectRequest/> } />
         </Routes>
       </BrowserRouter>

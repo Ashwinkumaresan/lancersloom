@@ -11,11 +11,20 @@ const Hero = () => {
   // });
   
   return (
-    <section id="home" className="hero d-flex align-items-center">
+    <section id="home" className="hero d-flex align-items-center" style={{minHeight:"100vh"}}>
       <Container>
         <Row className="align-items-center">
-          <Col lg={6} className="hero-content" >
-            <h1 className="display-3 fw-bold mb-3">Freelance Web Developement & Designing</h1>
+          <Col lg={6} className="text-center mb-5 mt-md-0 d-block d-md-none"  >
+            <div className="hero-img-container">
+              <img
+                src="Hero.png"
+                alt="hero_img"
+                className="img-fluid hero-img"
+              />
+            </div>
+          </Col>
+          <Col lg={6} >
+            <h1 className="display-3 fw-bold mb-3"><span className="text-primary">Fullstack</span> Web Designing & Developement</h1>
             <p className="lead mb-4 fs-6">
               Crafting beautiful, functional websites and applications that drive business growth.
             </p>
@@ -28,7 +37,7 @@ const Hero = () => {
               </a>
             </div>
           </Col>
-          <Col lg={6} className="text-center mt-5 mt-md-0"  >
+          <Col lg={6} className="text-center mt-5 mt-md-0 d-none d-md-block"  >
             <div className="hero-img-container">
               <img
                 src="Hero.png"

@@ -12,7 +12,7 @@ const About = () => {
   //   once: true        // Whether the animation should happen only once
   // });
   return (
-    <section id="about" className="py-5 bg-light mb-5">
+    <section id="about" className="py-5 bg-light mb-5" style={{minHeight:"100vh"}}>
       <Container>
         <Row className="align-items-center ">
           <Col lg={5} className="mb-4 mb-lg-0" >
@@ -23,7 +23,7 @@ const About = () => {
             />
           </Col>
           <Col lg={7} >
-            <h2 className="section-heading mb-4">About Us</h2>
+            <h2 className="section-heading my-4">About Us</h2>
             <p className="fs-6">
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus ratione repellat, optio aspernatur obcaecati odit laboriosam nulla labore nemo numquam.
             </p>

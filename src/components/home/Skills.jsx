@@ -5,7 +5,7 @@ const Skills = () => {
   return (
     <section id="skills" className="py-5 mb-5">
       <Container>
-        <Row className="text-center mb-5">
+        <Row className="text-center my-5">
           <Col lg={8} className="mx-auto">
             <h2 className="section-heading">Skills</h2>
             <p className="text-muted">Specialized in modern web technologies and design principles</p>

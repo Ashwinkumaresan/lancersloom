@@ -1,0 +1,65 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Playwrite+IN:wght@100..400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Playwrite+IN:wght@100..400&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+.dancingScript {
+    font-family: "Playwrite IN", cursive;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+}
+
+
+
+
+.primaryBlue {
+    color: #1E88E5;
+}
+
+.gray {
+    color: #D1D5DB;
+}
+
+.justify {
+    text-align: justify;
+}
+
+
+
+.img-hover-scale {
+    transition: transform 0.3s ease;
+}
+
+.img-hover-scale:hover {
+    transform: scale(1.05);
+}
+
+
+
+
+
+.fs-12 {
+    font-size: 12px;
+}
+
+.fs-14 {
+    font-size: 14px;
+}
+
+.ls-1 {
+    letter-spacing: 1px;
+}
+
+.ls-2 {
+    letter-spacing: 2px;
+}
+
+.ls-3 {
+    letter-spacing: 3px;
+}
+
+.ls-5 {
+    letter-spacing: 4px;
+}
+
+.ls-6 {
+    letter-spacing: 6px;
+}

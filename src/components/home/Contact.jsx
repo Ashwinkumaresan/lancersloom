@@ -1,8 +1,5 @@
-"use client"
-
 import { useState } from "react"
 import { Container, Row, Col, Form, Button } from "react-bootstrap"
-import { FaEnvelope, FaPhone, FaMapMarkerAlt } from "react-icons/fa"
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -47,7 +44,7 @@ const Contact = () => {
   return (
     <section id="contact" className="py-5">
       <Container>
-        <Row className="text-center mb-5">
+        <Row className="text-center my-5">
           <Col lg={8} className="mx-auto">
             <h2 className="section-heading">Get In Touch</h2>
             <p className="text-muted">Have a project in mind? Let's discuss how I can help.</p>

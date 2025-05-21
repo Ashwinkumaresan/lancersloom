@@ -1,4 +1,3 @@
-"use client"
 import { useState } from "react"
 import { Container, Row, Col, Form, Button, InputGroup } from "react-bootstrap"
 import { Link, useNavigate } from "react-router-dom"
@@ -8,7 +7,6 @@ const Login = () => {
   const [formData, setFormData] = useState({
     email: "",
     password: "",
-    rememberMe: false,
   })
   const [showPassword, setShowPassword] = useState(false)
   const [isSubmitting, setIsSubmitting] = useState(false)
@@ -38,7 +36,7 @@ const Login = () => {
   }
 
   return (
-    <div className="auth-page">
+    <div>
       <Container>
         <Row className="justify-content-center min-vh-100 align-items-center">
           <Col md={8} lg={6} xl={5}>
@@ -70,9 +68,9 @@ const Login = () => {
                   <Form.Group className="mb-3">
                     <div className="d-flex justify-content-between align-items-center">
                       <Form.Label>Password</Form.Label>
-                      <Link to="#" className="text-primary small">
+                      {/* <Link to="#" className="text-primary small">
                         Forgot Password?
-                      </Link>
+                      </Link> */}
                     </div>
                     <InputGroup>
                       <InputGroup.Text>

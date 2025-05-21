@@ -58,7 +58,7 @@ const Portfolio = () => {
   return (
     <section id="portfolio" className="py-5">
       <Container>
-        <Row className="text-center mb-5">
+        <Row className="text-center my-5">
           <Col lg={8} className="mx-auto">
             <h2 className="section-heading">Portfolio</h2>
             <p className="text-muted">Check out some of our recent projects</p>
