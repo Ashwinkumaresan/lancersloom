@@ -12,7 +12,7 @@ const Hero = () => {
 
   return (
     <section id="home" className="hero" >
-      <div className="container d-flex align-items-center" style={{ minHeight: "100vh" }}>
+      <div className="container" style={{ minHeight: "80vh" }}>
         <div className="row">
           <h1 className="display-3 text-center fw-bold">Make sure your profession is updated with the current technology</h1>
           <div className="text-center">
