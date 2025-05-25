@@ -12,9 +12,9 @@ const Hero = () => {
 
   return (
     <section id="home" className="hero" >
-      <div className="container" style={{ minHeight: "100vh" }}>
+      <div className="container d-flex align-items-center" style={{ minHeight: "100vh" }}>
         <div className="row">
-          <h1 className="display-3 text-center">Make sure your profession is updated with the current technology</h1>
+          <h1 className="display-3 text-center fw-bold">Make sure your profession is updated with the current technology</h1>
           <div className="text-center">
             <button className="btn btn-light mx-2 px-4 py-2">Request a project</button>
             <button className="btn btn-outline-light mx-2 px-4 py-2">View our work</button>
