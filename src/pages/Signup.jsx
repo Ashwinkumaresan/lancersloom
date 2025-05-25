@@ -4,9 +4,11 @@ import { Link, useNavigate } from "react-router-dom";
 
 const Signup = () => {
   const [email, setEmail] = useState("");
+  const [purpose, setPurpose] = useState("signup");
   const [emailError, setEmailError] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
+  localStorage.setItem("purpose", purpose);
 
   const handleButtonSubmit = async (e) => {
     e.preventDefault();
@@ -25,23 +27,26 @@ const Signup = () => {
     setEmailError("");
     setIsLoading(true);
 
+    console.log(email)
+    console.log(purpose)
     try {
       // Axios request to backend
-      // const res = await axios.post(
-      //   "https://test.mcetit.drmcetit.com/api/requestChange/",
-      //   { email },
-      //   {
-      //     headers: { "Content-Type": "application/json" },
-      //   }
-      // );
+      const res = await axios.post(
+        "https://api.lancer.drmcetit.com/api/user/sendEmail/",
+        { email, purpose },
+        {
+          headers: { "Content-Type": "application/json" },
+        }
+      );
 
-      // Store email in sessionStorage
-      sessionStorage.setItem("resetEmail", email);
+      // Store email in localStorage
+      localStorage.setItem("email", email);
 
       // Navigate to signup-otp page
       navigate("/signup-otp");
     } catch (error) {
-      setEmailError("Please check, college mail might already be registered");
+      console.log(error)
+      setEmailError("Please check, mail might already be registered");
     } finally {
       setIsLoading(false);
     }

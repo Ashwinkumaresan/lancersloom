@@ -9,45 +9,39 @@ const Hero = () => {
   //   delay: 100,       // Delay before animation starts
   //   once: true        // Whether the animation should happen only once
   // });
-  
+
   return (
-    <section id="home" className="hero d-flex align-items-center" style={{minHeight:"100vh"}}>
-      <Container>
-        <Row className="align-items-center">
-          <Col lg={6} className="text-center mb-5 mt-md-0 d-block d-md-none"  >
-            <div className="hero-img-container">
-              <img
-                src="Hero.png"
-                alt="hero_img"
-                className="img-fluid hero-img"
-              />
+    <section id="home" className="hero" style={{ minHeight: "100vh" }}>
+      <div className="container">
+        <div className="row">
+          <h1 className="display-3 text-center">Make sure your profession is updated with the current technology</h1>
+          <div className="text-center">
+            <button className="btn btn-light mx-2 px-4 py-2">Request a project</button>
+            <button className="btn btn-outline-light mx-2 px-4 py-2">View our work</button>
+            <img src="/Hero.svg" className="img-fluid" alt="Hero" />
+          </div>
+        </div>
+      </div>
+      {/* offers */}
+      <div className="container" style={{ backgroundColor: "#fff" }}>
+        <div className="row">
+          <div className="col-12 col-md-6">
+            <img src="/Offer.png" className="img-fluid" alt="Offers" />
+          </div>
+          <div className="col-12 col-md-6 p-5">
+            <p className="display-6 m-0 text-dark">Get a Demo💪</p>
+            <p className="display-6 m-0 text-dark">Build a Landing Page</p>
+            <p className="m-0 mt-2" style={{ color: "#A0A0A0" }}> Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit a excepturi odio eius debitis placeat, ullam aperiam facilis in sint.</p>
+            <div className="mt-3">
+              <p className="m-0 text-dark">Provide us with your email</p>
+              <div className="d-flex border rounded p-2">
+                <input type="text" className="w-100 email_input" placeholder="email" />
+                <button className="btn btn-primary px-4 py-1">Send</button>
+              </div>
             </div>
-          </Col>
-          <Col lg={6} >
-            <h1 className="display-3 fw-bold mb-3"><span className="text-primary">Fullstack</span> Web Designing & Developement</h1>
-            <p className="lead mb-4 fs-6">
-              Crafting beautiful, functional websites and applications that drive business growth.
-            </p>
-            <div className="d-flex gap-3 row p-2 p-md-0">
-              <Link to="/project-request" className="col-12 col-lg-6 btn btn-primary py-2">
-                Need Projects?
-              </Link>
-              <a href="#portfolio" className="col btn btn-outline-dark py-2">
-                View Our Work
-              </a>
-            </div>
-          </Col>
-          <Col lg={6} className="text-center mt-5 mt-md-0 d-none d-md-block"  >
-            <div className="hero-img-container">
-              <img
-                src="Hero.png"
-                alt="hero_img"
-                className="img-fluid hero-img"
-              />
-            </div>
-          </Col>
-        </Row>
-      </Container>
+          </div>
+        </div>
+      </div>
     </section>
   )
 }

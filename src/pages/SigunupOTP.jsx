@@ -12,14 +12,11 @@ export const SigunupOTP = () => {
   });
   const [canResend, setCanResend] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
-  const collegeMail = sessionStorage.getItem('resetEmail');
   const navigate = useNavigate()
-
-  // References for OTP inputs
   const inputRefs = [useRef(null), useRef(null), useRef(null), useRef(null), useRef(null), useRef(null)]
 
-  // Get email from session storage
-  const email = sessionStorage.getItem("resetEmail")
+  const email = localStorage.getItem("email")
+  const purpose = localStorage.getItem("purpose")
 
   // Redirect to email page if no email is found
   useEffect(() => {
@@ -28,11 +25,8 @@ export const SigunupOTP = () => {
     }
   }, [email, navigate])
 
-
-
   useEffect(() => {
     let interval;
-
     if (timer > 0) {
       interval = setInterval(() => {
         setTimer((prevTimer) => {
@@ -44,7 +38,6 @@ export const SigunupOTP = () => {
     } else {
       setCanResend(true);
     }
-
     return () => {
       if (interval) clearInterval(interval);
     };
@@ -57,79 +50,63 @@ export const SigunupOTP = () => {
     return `${mins}:${secs < 10 ? "0" : ""}${secs}`;
   };
 
+  // Handle OTP input (allows both numbers and characters)
+  const handleOtpChange = (index, value) => {
+    // Allow only the first character if value contains more than 1 character
+    if (value.length > 1) {
+      value = value.slice(0, 1);
+    }
 
+    const newOtp = [...otp];
+    newOtp[index] = value;
+    setOtp(newOtp);
 
-// Handle OTP input (allows both numbers and characters)
-const handleOtpChange = (index, value) => {
-  // Allow only the first character if value contains more than 1 character
-  if (value.length > 1) {
-    value = value.slice(0, 1);
+    // Auto-focus next input if a value is entered
+    if (value && index < otp.length - 1) {
+      inputRefs[index + 1].current.focus();
+    }
   }
 
-  // Optional: You can add validation to restrict to a specific set of characters (e.g., only alphanumeric)
-  // if (value && !/^[a-zA-Z0-9]*$/.test(value)) {
-  //   return;
-  // }
-
-  const newOtp = [...otp];
-  newOtp[index] = value;
-  setOtp(newOtp);
-
-  // Auto-focus next input if a value is entered
-  if (value && index < otp.length - 1) {
-    inputRefs[index + 1].current.focus();
-  }
-}
-
-// Handle key down for backspace and navigation
-const handleKeyDown = (index, e) => {
-  if (e.key === "Backspace" && !otp[index] && index > 0) {
-    inputRefs[index - 1].current.focus();
-  }
-  // Optional: You can handle other keys here if needed
-};
-
+  // Handle key down for backspace and navigation
+  const handleKeyDown = (index, e) => {
+    if (e.key === "Backspace" && !otp[index] && index > 0) {
+      inputRefs[index - 1].current.focus();
+    }
+  };
 
   // Handle OTP verification
   const handleVerifyOtp = async (e) => {
     e.preventDefault();
-
     const otpValue = otp.join("");
-
     if (otpValue.length !== 6) {
       setOtpError("Please enter a valid 6-digit OTP");
       return;
     }
-
     setOtpError("");
     setIsLoading(true);
-
     try {
       // Send request to backend for OTP verification
-    //   const res = await axios.post(
-    //     "https://test.mcetit.drmcetit.com/api/OtpVerification/",
-    //     { otp, collegeMail },
-    //     {
-    //       headers: { "Content-Type": "application/json" },
-    //     }
-    //   );
-      ////console.log("Server Response:", res.data);
-
+      const res = await axios.post(
+        "https://api.lancer.drmcetit.com/api/user/verifyOtp/",
+        { otp, email },
+        {
+          headers: { "Content-Type": "application/json" },
+        }
+      );
+      console.log("Server Response:", res.data);
       // Store OTP verification status
-      sessionStorage.setItem("otpVerified", otp);
-
+      localStorage.setItem("otpVerified", otp);
       // Navigate to password reset page
       navigate("/signup-set-password");
-
     } catch (error) {
-      //console.error("OTP verification error:", error);
-      //console.log(otp)
+      console.error("OTP verification error:", error);
+      console.log(otp)
+      console.log(email)
       setOtpError("Invalid OTP or verification failed. Please try again.");
     } finally {
       setIsLoading(false);
     }
   };
-
 
   // Resend OTP
   const resendOtp = async (e) => {
@@ -149,8 +126,8 @@ const handleKeyDown = (index, e) => {
 
         // API call to request a new OTP
         const res = await axios.post(
-          "https://test.mcetit.drmcetit.com/api/requestChange/",
-          { collegeMail },
+          "https://api.lancer.drmcetit.com/api/user/sendEmail/",
+          { email, purpose },
           {
             headers: { "Content-Type": "application/json" },
           }
@@ -162,14 +139,13 @@ const handleKeyDown = (index, e) => {
         alert(`A new OTP has been sent to ${email}`);
 
         // Continue to OTP verification flow
-        handleVerifyOtp();
+        // handleVerifyOtp();
 
       } catch (error) {
         //console.error("Forgot password error:", error);
       }
     }
   };
-
 
   // Mask email for privacy
   const maskEmail = (email) => {
@@ -193,8 +169,8 @@ const handleKeyDown = (index, e) => {
                 <p className="mt-3">
                   We've sent a 6-digit OTP to <strong>{maskEmail(email)}</strong>
                 </p>
-                <p className="alert alert-info">
-                Check your inbox or junk or spam folder for the OTP.
+                <p className="alert alert-info py-2">
+                  Check your inbox or junk or spam folder for the OTP.
                 </p>
               </div>
 

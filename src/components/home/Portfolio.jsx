@@ -61,7 +61,7 @@ const Portfolio = () => {
         <Row className="text-center my-5">
           <Col lg={8} className="mx-auto">
             <h2 className="section-heading">Portfolio</h2>
-            <p className="text-muted">Check out some of our recent projects</p>
+            <p style={{color:"#A0A0A0"}}>Check out some of our recent projects</p>
           </Col>
         </Row>
 
@@ -90,7 +90,7 @@ const Portfolio = () => {
         </Row>
 
         <div className="text-center mt-5">
-          <Button variant="outline-primary">View All Projects</Button>
+          <Button variant="outline-light">View All Projects</Button>
         </div>
       </Container>
     </section>

@@ -3,22 +3,22 @@ import { useState, useEffect } from "react"
 import { Link, useNavigate } from "react-router-dom"
 
 export const Signup_password = () => {
-  const [userName, setUserName] = useState("")
-  const [newPassword, setNewPassword] = useState("")
+  const [username, setusername] = useState("")
+  const [password, setpassword] = useState("")
   const [confirmPassword, setConfirmPassword] = useState("")
   const [passwordError, setPasswordError] = useState("")
   const [showPassword, setShowPassword] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
   const navigate = useNavigate()
 
-  const mail = sessionStorage.getItem("resetEmail")
-  const otp_re = sessionStorage.getItem("otpVerified")
+  const email = localStorage.getItem("email")
+  const otp = localStorage.getItem("otpVerified")
 
   useEffect(() => {
-    if (!mail || !otp_re) {
-      navigate("/student-login")
+    if (!email || !otp) {
+      navigate("/signup-set-password")
     }
-  }, [mail, otp_re, navigate])
+  }, [email, otp, navigate])
 
   const getPasswordStrength = (password) => {
     if (!password) return { strength: 0, text: "", class: "" }
@@ -45,27 +45,27 @@ export const Signup_password = () => {
     }
   }
 
-  const passwordStrength = getPasswordStrength(newPassword)
+  const passwordStrength = getPasswordStrength(password)
 
   const handleResetPassword = async (e) => {
     e.preventDefault()
 
-    if (!userName) {
+    if (!username) {
       setPasswordError("Please enter a username")
       return
     }
 
-    if (!newPassword) {
+    if (!password) {
       setPasswordError("Please enter a new password")
       return
     }
 
-    if (newPassword.length < 8) {
+    if (password.length < 8) {
       setPasswordError("Password must be at least 8 characters long")
       return
     }
 
-    if (newPassword !== confirmPassword) {
+    if (password !== confirmPassword) {
       setPasswordError("Passwords do not match")
       return
     }
@@ -73,18 +73,14 @@ export const Signup_password = () => {
     setPasswordError("")
     setIsLoading(true)
 
-    const otp = sessionStorage.getItem("otpVerified")
-
     try {
-      const collegeMail = sessionStorage.getItem("resetEmail")
-
       const res = await axios.post(
-        "https://test.mcetit.drmcetit.com/api/changePassword/",
+        "https://api.lancer.drmcetit.com/api/user/signup/",
         {
-          userName, // Added userName in payload
-          newPassword,
+          username,
+          password,
           confirmPassword,
-          collegeMail,
+          email,
           otp,
         },
         {
@@ -94,9 +90,14 @@ export const Signup_password = () => {
 
       alert("Password reset successful! You can now login with your new password.")
       navigate("/login")
-      sessionStorage.removeItem("resetEmail")
-      sessionStorage.removeItem("otpVerified")
     } catch (error) {
+      console.log(error);
+      console.log(username);
+      console.log(email);
+      console.log(otp);
+      console.log(password);
+      console.log(confirmPassword);
+
       setPasswordError("Something went wrong. Please try again.")
     } finally {
       setIsLoading(false)
@@ -119,18 +120,18 @@ export const Signup_password = () => {
               </div>
 
               <form onSubmit={handleResetPassword}>
-                {/* Username field */}
+                {/* username field */}
                 <div className="mb-4">
-                  <label htmlFor="userName" className="form-label">
+                  <label htmlFor="username" className="form-label">
                     Username
                   </label>
                   <input
                     type="text"
-                    className={`form-control ${passwordError && !userName ? "is-invalid" : ""}`}
-                    id="userName"
+                    className={`form-control ${passwordError && !username ? "is-invalid" : ""}`}
+                    id="username"
                     placeholder="Enter your username"
-                    value={userName}
-                    onChange={(e) => setUserName(e.target.value)}
+                    value={username}
+                    onChange={(e) => setusername(e.target.value)}
                     required
                   />
                 </div>
@@ -146,8 +147,8 @@ export const Signup_password = () => {
                       className={`form-control ${passwordError ? "is-invalid" : ""}`}
                       id="new-password"
                       placeholder="Enter new password"
-                      value={newPassword}
-                      onChange={(e) => setNewPassword(e.target.value)}
+                      value={password}
+                      onChange={(e) => setpassword(e.target.value)}
                       required
                     />
                     <button
@@ -159,7 +160,7 @@ export const Signup_password = () => {
                     </button>
                   </div>
 
-                  {newPassword && (
+                  {password && (
                     <div className="mt-2">
                       <div className="progress" style={{ height: "5px" }}>
                         <div

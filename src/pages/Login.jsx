@@ -1,39 +1,60 @@
-import { useState } from "react"
-import { Container, Row, Col, Form, Button, InputGroup } from "react-bootstrap"
-import { Link, useNavigate } from "react-router-dom"
-import { FaEnvelope, FaLock, FaEye, FaEyeSlash } from "react-icons/fa"
+import { useState } from "react";
+import axios from "axios";
+import { Container, Row, Col, Form, Button, InputGroup } from "react-bootstrap";
+import { Link, useNavigate } from "react-router-dom";
+import { FaEnvelope, FaLock, FaEye, FaEyeSlash } from "react-icons/fa";
 
 const Login = () => {
   const [formData, setFormData] = useState({
     email: "",
     password: "",
-  })
-  const [showPassword, setShowPassword] = useState(false)
-  const [isSubmitting, setIsSubmitting] = useState(false)
-  const navigate = useNavigate()
+  });
+  const [showPassword, setShowPassword] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
-    const { id, value, checked, type } = e.target
+    const { id, value, checked, type } = e.target;
     setFormData((prevState) => ({
       ...prevState,
       [id]: type === "checkbox" ? checked : value,
-    }))
-  }
+    }));
+  };
 
   const togglePasswordVisibility = () => {
-    setShowPassword(!showPassword)
-  }
+    setShowPassword(!showPassword);
+  };
 
-  const handleSubmit = (e) => {
-    e.preventDefault()
-    setIsSubmitting(true)
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setIsSubmitting(true);
 
-    // Simulate authentication
-    setTimeout(() => {
-      setIsSubmitting(false)
-      navigate("/")
-    }, 1500)
-  }
+    try {
+      const loginResponse = await axios.post(
+        "https://api.lancer.drmcetit.com/api/user/login/",
+        formData,
+        {
+          headers: { "Content-Type": "application/json" },
+        }
+      );
+      localStorage.setItem("access_token", loginResponse.data.access_token);
+      localStorage.setItem("refresh_token", loginResponse.data.refresh_token);
+      localStorage.setItem("email", formData.email);
+      localStorage.setItem("timestamp", new Date().getTime());
+      navigate("/");
+    } catch (error) {
+      if (error.response) {
+        console.error("Error status:", error.response.status);
+        console.error("Error message:", error.response.data);
+      } else if (error.request) {
+        console.error("No response received:", error.request);
+      } else {
+        console.error("Error setting up request:", error.message);
+      }
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
 
   return (
     <div>
@@ -68,9 +89,6 @@ const Login = () => {
                   <Form.Group className="mb-3">
                     <div className="d-flex justify-content-between align-items-center">
                       <Form.Label>Password</Form.Label>
-                      {/* <Link to="#" className="text-primary small">
-                        Forgot Password?
-                      </Link> */}
                     </div>
                     <InputGroup>
                       <InputGroup.Text>
@@ -88,13 +106,19 @@ const Login = () => {
                         variant="outline-secondary"
                         onClick={togglePasswordVisibility}
                         className="toggle-password"
+                        type="button"
                       >
                         {showPassword ? <FaEyeSlash /> : <FaEye />}
                       </Button>
                     </InputGroup>
                   </Form.Group>
 
-                  <Button type="submit" variant="primary" className="w-100 mb-3" disabled={isSubmitting}>
+                  <Button
+                    type="submit"
+                    variant="primary"
+                    className="w-100 mb-3"
+                    disabled={isSubmitting}
+                  >
                     {isSubmitting ? "Signing in..." : "Sign In"}
                   </Button>
                 </Form>
@@ -119,8 +143,7 @@ const Login = () => {
         </Row>
       </Container>
     </div>
-  )
-}
+  );
+};
 
-export default Login
-
+export default Login;

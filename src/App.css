@@ -2,6 +2,7 @@
   --primary: #3b82f6;
   --primary-dark: #2563eb;
   --dark-blue: #1e293b;
+  --dark: #0D0D0D;
   --light-gray: #f1f5f9;
   --text-dark: #0f172a;
   --text-light: #64748b;
@@ -17,7 +18,8 @@
 
 body {
   font-family: "Inter", sans-serif;
-  color: var(--text-dark);
+  color: var(--white);
+  background-color: var(--dark);
   line-height: 1.6;
   overflow-x: hidden;
 }
@@ -35,42 +37,23 @@ a:hover {
 /*Hero Section*/
 .hero {
   padding: 8rem 0 5rem;
-  background-color: var(--white);
 }
 
 .hero-content h1 {
   margin-bottom: 1.5rem;
 }
 
-/*Skills Section*/
-.skill-card {
-  background-color: var(--white);
-  border-radius: 10px;
-  padding: 2rem;
-  height: 100%;
-  box-shadow: var(--card-shadow);
-  transition: var(--transition);
-}
 
-.skill-card:hover {
-  transform: translateY(-5px);
-}
-
-.skill-icon {
-  font-size: 2.5rem;
-  color: var(--primary);
-  margin-bottom: 1.5rem;
-}
-
-.skill-tags {
-  margin-top: 1rem;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
+.email_input{
+  outline: none;
+  background: transparent;
+  border: none;
 }
 
 /*Portfolio Section*/
 .portfolio-item {
+  background-color: var(--dark);
+  color: var(--white);
   border: none;
   border-radius: 10px;
   overflow: hidden;
@@ -114,6 +97,7 @@ a:hover {
 /*Contact Section*/
 .contact-card {
   background-color: var(--white);
+  color: var(--black);
   border-radius: 10px;
   padding: 2rem;
   box-shadow: var(--card-shadow);

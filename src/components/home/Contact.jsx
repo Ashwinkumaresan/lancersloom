@@ -47,7 +47,7 @@ const Contact = () => {
         <Row className="text-center my-5">
           <Col lg={8} className="mx-auto">
             <h2 className="section-heading">Get In Touch</h2>
-            <p className="text-muted">Have a project in mind? Let's discuss how I can help.</p>
+            <p style={{color:"#A0A0A0"}}>Have a project in mind? Let's discuss how I can help.</p>
           </Col>
         </Row>
 
@@ -63,15 +63,15 @@ const Contact = () => {
                 <Form onSubmit={handleSubmit}>
                   <Form.Group className="mb-3">
                     <Form.Label>Name</Form.Label>
-                    <Form.Control type="text" id="name" value={formData.name} onChange={handleChange} required />
+                    <Form.Control type="text" id="name" value={formData.name} placeholder="Name" onChange={handleChange} required />
                   </Form.Group>
                   <Form.Group className="mb-3">
                     <Form.Label>Email</Form.Label>
-                    <Form.Control type="email" id="email" value={formData.email} onChange={handleChange} required />
+                    <Form.Control type="email" id="email" value={formData.email} placeholder="Email" onChange={handleChange} required />
                   </Form.Group>
                   <Form.Group className="mb-3">
                     <Form.Label>Subject</Form.Label>
-                    <Form.Control type="text" id="subject" value={formData.subject} onChange={handleChange} required />
+                    <Form.Control type="text" id="subject" value={formData.subject} placeholder="Subject" onChange={handleChange} required />
                   </Form.Group>
                   <Form.Group className="mb-3">
                     <Form.Label>Message</Form.Label>
@@ -80,6 +80,7 @@ const Contact = () => {
                       id="message"
                       rows={5}
                       value={formData.message}
+                      placeholder="Your area..."
                       onChange={handleChange}
                       required
                     />
