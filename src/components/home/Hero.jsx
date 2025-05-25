@@ -23,12 +23,12 @@ const Hero = () => {
         </div>
       </div>
       {/* offers */}
-      <div className="container" style={{ backgroundColor: "#fff" }}>
-        <div className="row">
+      <div className="container px-5">
+        <div className="row"  style={{ backgroundColor: "#fff" }}>
           <div className="col-12 col-md-6">
             <img src="/Offer.png" className="img-fluid" alt="Offers" />
           </div>
-          <div className="col-12 col-md-6 p-5">
+          <div className="col-12 col-md-6 p-3 p-md-5">
             <p className="display-6 m-0 text-dark">Get a Demo💪</p>
             <p className="display-6 m-0 text-dark">Build a Landing Page</p>
             <p className="m-0 mt-2" style={{ color: "#A0A0A0" }}> Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit a excepturi odio eius debitis placeat, ullam aperiam facilis in sint.</p>
