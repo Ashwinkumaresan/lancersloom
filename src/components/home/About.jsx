@@ -12,8 +12,8 @@ const About = () => {
   //   once: true        // Whether the animation should happen only once
   // });
   return (
-    <section id="about" className="py-5" style={{ minHeight: "100vh" }}>
-      <Container className="mt-5">
+    <section id="about" className="p-10">
+      <Container>
         <div className="row">
           <div className="col-12 col-md-6 ">
             <h4>Our story</h4>

@@ -90,6 +90,7 @@ export const Signup_password = () => {
 
       alert("Password reset successful! You can now login with your new password.")
       navigate("/login")
+      localStorage.clear();
     } catch (error) {
       console.log(error);
       console.log(username);
@@ -105,7 +106,7 @@ export const Signup_password = () => {
   }
 
   return (
-    <div className="container py-5">
+    <div className="container pt-0 pt-md-5 mt-0 mt-md-5 d-flex d-md-block justify-content-center align-items-center" style={{minHeight:"90vh"}}>
       <div className="row justify-content-center">
         <div className="col-md-6 col-lg-5">
           <div className="card shadow">
@@ -199,10 +200,10 @@ export const Signup_password = () => {
                     {isLoading ? (
                       <>
                         <span className="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
-                        Resetting...
+                        Creatting...
                       </>
                     ) : (
-                      "Reset Password"
+                      "Create Account"
                     )}
                   </button>
                 </div>

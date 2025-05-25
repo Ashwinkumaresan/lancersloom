@@ -59,7 +59,7 @@ const Login = () => {
   return (
     <div>
       <Container>
-        <Row className="justify-content-center min-vh-100 align-items-center">
+        <Row className="justify-content-center min-vh-100 align-items-center text-dark">
           <Col md={8} lg={6} xl={5}>
             <div className="auth-card mt-5">
               <div className="card-header text-center">

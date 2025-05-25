@@ -56,12 +56,12 @@ const Portfolio = () => {
   ]
 
   return (
-    <section id="portfolio" className="py-5">
+    <section id="portfolio" className="p-10">
       <Container>
         <Row className="text-center my-5">
           <Col lg={8} className="mx-auto">
-            <h2 className="section-heading">Portfolio</h2>
-            <p style={{color:"#A0A0A0"}}>Check out some of our recent projects</p>
+            <h2 className="display-1 text-center fw-bold">Our projects!</h2>
+            <h2 className="display-1 text-center fw-bold">Right infront of you...</h2>
           </Col>
         </Row>
 

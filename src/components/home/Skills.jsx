@@ -3,7 +3,7 @@ import { FaReact, FaServer, FaPaintBrush } from "react-icons/fa"
 
 const Skills = () => {
   return (
-    <section id="skills" className="py-5">
+    <section id="skills" className="p-10">
       {/* <Container>
         <Row className="text-center my-5">
           <Col lg={8} className="mx-auto">
@@ -87,33 +87,30 @@ const Skills = () => {
         </Row>
       </Container> */}
       {/* Skills */}
-      <Container className="my-5" style={{
-  backgroundImage: 'url("/skills_bg.png")',
-  backgroundSize: "cover",
-  backgroundPosition: "center",
-}}
->
-        <h2 className="display-5 text-center">The area's where we are</h2>
-        <div className="text-center py-4 m-5 d-flex align-items-center justify-content-center gap-4 flex-wrap" >
-        <h2>UI/UX</h2>
-        <h2>Figma</h2>
-        <h2>Logo/Posters</h2>
-        <h2>Html5/Css3</h2>
-        <h2>JS</h2>
-        <h2>Bootstrap Css</h2>
-        <h2>ReactJS</h2>
-        <h2>Python</h2>
-        <h2>Flask</h2>
-        <h2>MangoDB</h2>
-        <h2>SQL</h2>
-        <h2>Django</h2>
-        <h2>Django REST API</h2>
-        <h2>API Developement</h2>
+      <Container 
+      >
+        <h2 className="display-1 fw-bold text-center">The area's where we are</h2>
+        <div className="text-center py-4 d-flex align-items-center justify-content-center gap-4 flex-wrap position-relative" >
+        <img src="/skills_bg.png" className="img-fluid position-absolute" alt="" style={{zIndex:"-1"}} />
+          <h2 className="fw-light border rounded fs-5 py-2 px-4 badge_hover">UI/UX</h2>
+          <h2 className="fw-light border rounded fs-5 py-2 px-4 badge_hover">Figma</h2>
+          <h2 className="fw-light border rounded fs-5 py-2 px-4 badge_hover">Logo/Posters</h2>
+          <h2 className="fw-light border rounded fs-5 py-2 px-4 badge_hover">Html5/Css3</h2>
+          <h2 className="fw-light border rounded fs-5 py-2 px-4 badge_hover">JS</h2>
+          <h2 className="fw-light border rounded fs-5 py-2 px-4 badge_hover">Bootstrap Css</h2>
+          <h2 className="fw-light border rounded fs-5 py-2 px-4 badge_hover">ReactJS</h2>
+          <h2 className="fw-light border rounded fs-5 py-2 px-4 badge_hover">Python</h2>
+          <h2 className="fw-light border rounded fs-5 py-2 px-4 badge_hover">Flask</h2>
+          <h2 className="fw-light border rounded fs-5 py-2 px-4 badge_hover">MangoDB</h2>
+          <h2 className="fw-light border rounded fs-5 py-2 px-4 badge_hover">SQL</h2>
+          <h2 className="fw-light border rounded fs-5 py-2 px-4 badge_hover">Django</h2>
+          <h2 className="fw-light border rounded fs-5 py-2 px-4 badge_hover">Django REST API</h2>
+          <h2 className="fw-light border rounded fs-5 py-2 px-4 badge_hover">API Developement</h2>
         </div>
 
       </Container>
-      <Container className="mt-5 py-5">
-        <h2 className="display-5 text-center">Unlimited options give you the ultimate flexibility</h2>
+      <Container>
+        <h2 className="display-1 fw-bold mt-5 text-center">Unlimited options give you the ultimate flexibility</h2>
 
         <Row className="g-4 my-3">
           <Col xs={12} sm={12} md={12} lg={6} xl={6} xxl={6}  >
