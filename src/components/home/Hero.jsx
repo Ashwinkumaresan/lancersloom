@@ -11,8 +11,8 @@ const Hero = () => {
   // });
 
   return (
-    <section id="home" className="hero" style={{ minHeight: "100vh" }}>
-      <div className="container">
+    <section id="home" className="hero" >
+      <div className="container" style={{ minHeight: "100vh" }}>
         <div className="row">
           <h1 className="display-3 text-center">Make sure your profession is updated with the current technology</h1>
           <div className="text-center">
