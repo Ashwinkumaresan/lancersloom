@@ -1,6 +1,15 @@
 import { Container, Row, Col, Card, Badge, Button } from "react-bootstrap"
+import AOS from "aos";
+import 'aos/dist/aos.css';
+import { useEffect } from "react";
 
 const Portfolio = () => {
+  useEffect(() => {
+    AOS.init({
+      duration: 1000,  // animation duration in ms
+      once: true       // whether animation should happen only once
+    });
+  }, []);
   const projects = [
     {
       id: 1,
@@ -60,22 +69,22 @@ const Portfolio = () => {
       <Container>
         <Row className="text-center my-5">
           <Col lg={8} className="mx-auto">
-            <h2 className="display-1 text-center fw-bold">Our projects!</h2>
-            <h2 className="display-1 text-center fw-bold">Right infront of you...</h2>
+            <h2 className="display-1 text-center fw-bold" data-aos="fade-up">Our projects!</h2>
+            <h2 className="display-1 text-center fw-bold" data-aos="fade-up">Right infront of you...</h2>
           </Col>
         </Row>
 
         <Row className="g-4">
           {projects.map((project) => (
             <Col key={project.id} md={6} lg={4}>
-              <Card className="portfolio-item h-100">
-                <Card.Img variant="top" src={project.image} alt={project.title} />
+              <Card className="portfolio-item h-100" data-aos="fade-up">
+                <Card.Img variant="top" src={project.image} alt={project.title} data-aos="fade-up"/>
                 <Card.Body>
-                  <Card.Title>{project.title}</Card.Title>
-                  <Card.Text>{project.description}</Card.Text>
+                  <Card.Title data-aos="fade-up">{project.title}</Card.Title>
+                  <Card.Text data-aos="fade-up">{project.description}</Card.Text>
                   <div className="d-flex flex-wrap gap-1 mb-3">
                     {project.technologies.map((tech, index) => (
-                      <Badge key={index} bg="secondary">
+                      <Badge key={index} bg="secondary" data-aos="fade-up">
                         {tech}
                       </Badge>
                     ))}
@@ -89,7 +98,7 @@ const Portfolio = () => {
           ))}
         </Row>
 
-        <div className="text-center mt-5">
+        <div className="text-center mt-5" data-aos="fade-up">
           <Button variant="outline-light">View All Projects</Button>
         </div>
       </Container>

@@ -1,7 +1,14 @@
 import { Container, Row, Col, Card } from "react-bootstrap";
-import { FaReact, FaServer, FaPaintBrush } from "react-icons/fa"
-
+import AOS from "aos";
+import 'aos/dist/aos.css';
+import { useEffect } from "react";
 const Skills = () => {
+  useEffect(() => {
+    AOS.init({
+      duration: 1000,  // animation duration in ms
+      once: true       // whether animation should happen only once
+    });
+  }, []);
   return (
     <section id="skills" className="p-10">
       {/* <Container>
@@ -87,76 +94,78 @@ const Skills = () => {
         </Row>
       </Container> */}
       {/* Skills */}
-      <Container 
+      <Container
       >
-        <h2 className="display-1 fw-bold text-center">The area's where we are</h2>
+        <h2 className="display-1 fw-bold text-center" data-aos="fade-up">The area's where we are</h2>
         <div className="text-center py-4 d-flex align-items-center justify-content-center gap-4 flex-wrap position-relative" >
-        <img src="/skills_bg.png" className="img-fluid position-absolute" alt="" style={{zIndex:"-1"}} />
-          <h2 className="fw-light border rounded fs-5 py-2 px-4 badge_hover">UI/UX</h2>
-          <h2 className="fw-light border rounded fs-5 py-2 px-4 badge_hover">Figma</h2>
-          <h2 className="fw-light border rounded fs-5 py-2 px-4 badge_hover">Logo/Posters</h2>
-          <h2 className="fw-light border rounded fs-5 py-2 px-4 badge_hover">Html5/Css3</h2>
-          <h2 className="fw-light border rounded fs-5 py-2 px-4 badge_hover">JS</h2>
-          <h2 className="fw-light border rounded fs-5 py-2 px-4 badge_hover">Bootstrap Css</h2>
-          <h2 className="fw-light border rounded fs-5 py-2 px-4 badge_hover">ReactJS</h2>
-          <h2 className="fw-light border rounded fs-5 py-2 px-4 badge_hover">Python</h2>
-          <h2 className="fw-light border rounded fs-5 py-2 px-4 badge_hover">Flask</h2>
-          <h2 className="fw-light border rounded fs-5 py-2 px-4 badge_hover">MangoDB</h2>
-          <h2 className="fw-light border rounded fs-5 py-2 px-4 badge_hover">SQL</h2>
-          <h2 className="fw-light border rounded fs-5 py-2 px-4 badge_hover">Django</h2>
-          <h2 className="fw-light border rounded fs-5 py-2 px-4 badge_hover">Django REST API</h2>
-          <h2 className="fw-light border rounded fs-5 py-2 px-4 badge_hover">API Developement</h2>
+          <img src="/skills_bg.png" className="img-fluid position-absolute" alt="" style={{ zIndex: "-1" }} />
+          <div className="text-center py-4 d-flex align-items-center justify-content-center gap-4 flex-wrap position-relative" >
+            <h2 className="fw-light border rounded fs-5 py-2 px-4 badge_hover" data-aos="fade-up">UI/UX</h2>
+            <h2 className="fw-light border rounded fs-5 py-2 px-4 badge_hover" data-aos="fade-up">Figma</h2>
+            <h2 className="fw-light border rounded fs-5 py-2 px-4 badge_hover" data-aos="fade-up">Logo/Posters</h2>
+            <h2 className="fw-light border rounded fs-5 py-2 px-4 badge_hover" data-aos="fade-up">Html5/Css3</h2>
+            <h2 className="fw-light border rounded fs-5 py-2 px-4 badge_hover" data-aos="fade-up">JS</h2>
+            <h2 className="fw-light border rounded fs-5 py-2 px-4 badge_hover" data-aos="fade-up">Bootstrap Css</h2>
+            <h2 className="fw-light border rounded fs-5 py-2 px-4 badge_hover" data-aos="fade-up">ReactJS</h2>
+            <h2 className="fw-light border rounded fs-5 py-2 px-4 badge_hover" data-aos="fade-up">Python</h2>
+            <h2 className="fw-light border rounded fs-5 py-2 px-4 badge_hover" data-aos="fade-up">Flask</h2>
+            <h2 className="fw-light border rounded fs-5 py-2 px-4 badge_hover" data-aos="fade-up">MangoDB</h2>
+            <h2 className="fw-light border rounded fs-5 py-2 px-4 badge_hover" data-aos="fade-up">SQL</h2>
+            <h2 className="fw-light border rounded fs-5 py-2 px-4 badge_hover" data-aos="fade-up">Django</h2>
+            <h2 className="fw-light border rounded fs-5 py-2 px-4 badge_hover" data-aos="fade-up">Django REST API</h2>
+            <h2 className="fw-light border rounded fs-5 py-2 px-4 badge_hover" data-aos="fade-up">API Developement</h2>
+          </div>
         </div>
 
       </Container>
       <Container>
-        <h2 className="display-1 fw-bold mt-5 text-center">Unlimited options give you the ultimate flexibility</h2>
+        <h2 className="display-1 fw-bold mt-5 text-center" data-aos="fade-up">Unlimited options give you the ultimate flexibility</h2>
 
         <Row className="g-4 my-3">
           <Col xs={12} sm={12} md={12} lg={6} xl={6} xxl={6}  >
-            <Card className="shadow-sm p-4">
+            <Card className="shadow-sm p-4" data-aos="fade-up">
               <Card.Body className="d-flex gap-2">
                 <Card.Title className="d-flex align-items-center gap-2">
-                  <img src="/Icon_tick.png" alt="" />
+                  <img src="/Icon_tick.png" alt="" data-aos="fade-up"/>
                 </Card.Title>
                 <Card.Text className="text-muted fs-14">
-                  <span className="text-dark fw-bold">Unlimited Components:</span> Clarity gives you the blocks & components you need to create a website.
+                  <span className="text-dark fw-bold" data-aos="fade-up">Unlimited Components:</span> Clarity gives you the blocks & components you need to create a website.
                 </Card.Text>
               </Card.Body>
             </Card>
           </Col>
           <Col xs={12} sm={12} md={12} lg={6} xl={6} xxl={6}  >
-            <Card className="shadow-sm p-4">
+            <Card className="shadow-sm p-4" data-aos="fade-up">
               <Card.Body className="d-flex gap-2">
                 <Card.Title className="d-flex align-items-center gap-2">
-                  <img src="/Icon_tick.png" alt="" />
+                  <img src="/Icon_tick.png" alt="" data-aos="fade-up" />
                 </Card.Title>
                 <Card.Text className="text-muted fs-14">
-                  <span className="text-dark fw-bold">Build Website:</span>Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint.
+                  <span className="text-dark fw-bold" data-aos="fade-up">Build Website:</span>Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint.
                 </Card.Text>
               </Card.Body>
             </Card>
           </Col>
           <Col xs={12} sm={12} md={12} lg={6} xl={6} xxl={6}  >
-            <Card className="shadow-sm p-4">
+            <Card className="shadow-sm p-4" data-aos="fade-up">
               <Card.Body className="d-flex gap-2">
                 <Card.Title className="d-flex align-items-center gap-2">
-                  <img src="/Icon_tick.png" alt="" />
+                  <img src="/Icon_tick.png" alt="" data-aos="fade-up" />
                 </Card.Title>
                 <Card.Text className="text-muted fs-14">
-                  <span className="text-dark fw-bold">Easy Analytics:</span>Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint.
+                  <span className="text-dark fw-bold" data-aos="fade-up">Easy Analytics:</span>Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint.
                 </Card.Text>
               </Card.Body>
             </Card>
           </Col>
           <Col xs={12} sm={12} md={12} lg={6} xl={6} xxl={6}  >
-            <Card className="shadow-sm p-4">
+            <Card className="shadow-sm p-4" data-aos="fade-up">
               <Card.Body className="d-flex gap-2">
                 <Card.Title className="d-flex align-items-center gap-2">
-                  <img src="/Icon_tick.png" alt="" />
+                  <img src="/Icon_tick.png" alt="" data-aos="fade-up" />
                 </Card.Title>
                 <Card.Text className="text-muted fs-14">
-                  <span className="text-dark fw-bold">Release Fast:</span>Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint.
+                  <span className="text-dark fw-bold" data-aos="fade-up">Release Fast:</span>Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint.
                 </Card.Text>
               </Card.Body>
             </Card>
