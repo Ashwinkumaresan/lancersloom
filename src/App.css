@@ -14,6 +14,17 @@
   --border-color: #e2e8f0;
   --card-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
   --transition: all 0.3s ease;
+
+  --dark-bg: #0d0d0d;
+  --dark-card: #1a1a1a;
+  --dark-border: #333;
+  --accent-color: #3b82f6;
+  --accent-hover: #2563eb;
+  --text-primary: #ffffff;
+  --text-secondary: #a1a1aa;
+  --success-color: #10b981;
+  --error-color: #ef4444;
+  --warning-color: #f59e0b;
 }
 body {
   width: 100vw;
@@ -223,3 +234,6 @@ a:hover {
   box-shadow: var(--card-shadow);
   margin-bottom: 3rem;
 }
+
+
+

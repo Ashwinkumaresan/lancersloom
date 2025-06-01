@@ -1,13 +1,14 @@
 import { Container, Row, Col } from "react-bootstrap"
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import AOS from "aos";
 import 'aos/dist/aos.css';
 import { useEffect } from "react";
 
 const Hero = () => {
+  const navigate = useNavigate();
   useEffect(() => {
     AOS.init({
-      duration: 1000,  // animation duration in ms
+      duration: 3000,  // animation duration in ms
       once: true       // whether animation should happen only once
     });
   }, []);
@@ -18,7 +19,7 @@ const Hero = () => {
         <div className="row">
           <h1 className="display-1 text-center fw-bold" data-aos="fade-up">Make sure your profession is updated with the current technology</h1>
           <div className="text-center">
-            <button className="btn btn-light mx-2 px-4 py-2" data-aos="fade-up">Request a project</button>
+            <button onClick={() => navigate("/project-request")} className="btn btn-light mx-2 px-4 py-2" data-aos="fade-up">Request a project</button>
             <button className="btn btn-outline-light mx-2 px-4 py-2" data-aos="fade-up">View our work</button>
           </div>
             <img src="/Hero.svg" data-aos="fade-up" className="img-fluid" alt="Hero" />

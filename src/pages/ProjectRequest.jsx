@@ -1,281 +1,342 @@
-"use client"
+import { useState } from "react"
 
-import { useState, useEffect } from "react"
-import { Container, Row, Col, Form, Button, Alert } from "react-bootstrap"
-
-const ProjectRequest = () => {
+function ProjectRequest() {
   const [formData, setFormData] = useState({
-    clientName: "",
-    clientEmail: "",
-    clientPhone: "",
-    location: "",
-    state: "",
     projectTitle: "",
-    projectType: "",
     projectDescription: "",
-    nda: false,
+    features: "",
+    budget: "",
+    deadline: "",
+    additionalNotes: "",
+    attachments: null,
   })
 
-  const [validated, setValidated] = useState(false)
+  const [imagePreview, setImagePreview] = useState([])
   const [isSubmitting, setIsSubmitting] = useState(false)
-  const [showSuccess, setShowSuccess] = useState(false)
-  const [files, setFiles] = useState([])
 
-  useEffect(() => {
-    // Set minimum date to today for deadline input
-    const today = new Date()
-    const dd = String(today.getDate()).padStart(2, "0")
-    const mm = String(today.getMonth() + 1).padStart(2, "0")
-    const yyyy = today.getFullYear()
-
-    const todayFormatted = yyyy + "-" + mm + "-" + dd
-    document.getElementById("projectDeadline")?.setAttribute("min", todayFormatted)
-  }, [])
-
-  const handleChange = (e) => {
-    const { id, value, checked, type } = e.target
-
-    if (id.startsWith("tech")) {
-      const tech = id.replace("tech", "")
-      setFormData((prevState) => ({
-        ...prevState,
-        technologies: {
-          ...prevState.technologies,
-          [tech]: checked,
-        },
-      }))
-    } else {
-      setFormData((prevState) => ({
-        ...prevState,
-        [id]: type === "checkbox" ? checked : value,
-      }))
-    }
+  const handleInputChange = (e) => {
+    const { name, value } = e.target
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }))
   }
 
   const handleFileChange = (e) => {
-    const selectedFiles = Array.from(e.target.files)
+    const files = e.target.files
+    setFormData((prev) => ({
+      ...prev,
+      attachments: files,
+    }))
 
-    // Check number of files
-    if (selectedFiles.length > 5) {
-      alert("You can upload a maximum of 5 files.")
-      e.target.value = ""
-      return
-    }
+    // Generate image previews
+    if (files) {
+      const previews = []
+      const imageFiles = Array.from(files).filter((file) =>
+        file.type.startsWith("image/")
+      )
 
-    // Check file sizes
-    for (let i = 0; i < selectedFiles.length; i++) {
-      if (selectedFiles[i].size > 10 * 1024 * 1024) {
-        // 10MB
-        alert("One or more files exceed the maximum size of 10MB.")
-        e.target.value = ""
+      if (imageFiles.length === 0) {
+        setImagePreview([])
         return
       }
-    }
 
-    setFiles(selectedFiles)
+      imageFiles.forEach((file, index) => {
+        const reader = new FileReader()
+        reader.onload = (e) => {
+          if (e.target.result) {
+            previews.push(e.target.result)
+            if (previews.length === imageFiles.length) {
+              setImagePreview(previews)
+            }
+          }
+        }
+        reader.readAsDataURL(file)
+      })
+    } else {
+      setImagePreview([])
+    }
   }
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    const form = e.currentTarget
-
-    if (form.checkValidity() === false) {
-      e.stopPropagation()
-      setValidated(true)
-      return
-    }
-
     setIsSubmitting(true)
 
-    // Simulate form submission
     setTimeout(() => {
+      console.log("Form submitted:", formData)
       setIsSubmitting(false)
-      setShowSuccess(true)
-      window.scrollTo({ top: 0, behavior: "smooth" })
+      alert("Project submitted successfully!")
 
-      // Reset form
       setFormData({
-        clientName: "",
-        clientEmail: "",
-        clientPhone: "",
-        city: "",
-        State: "",
         projectTitle: "",
-        projectType: "",
         projectDescription: "",
-        nda: false,
+        features: "",
+        budget: "",
+        deadline: "",
+        additionalNotes: "",
+        attachments: null,
       })
-      setFiles([])
-      setValidated(false)
+      setImagePreview([])
+
+      const fileInput = document.getElementById("attachments")
+      if (fileInput) fileInput.value = ""
     }, 1500)
   }
 
   return (
-    <section className="project-request-section py-5">
-      <Container>
-        <Row className="justify-content-center">
-          <Col lg={10}>
-            <div className="text-center mb-5 pt-5">
-              <h1 className="fw-bold">Start Your Project</h1>
-              <p className="text-muted">
-                Fill out the form below with your project details and I'll get back to you within 24 hours.
-              </p>
+    <div
+      className="min-vh-100"
+      style={{
+        backgroundAttachment: "fixed",
+      }}
+    >
+      <div>
+        <div className="row" style={{
+          height: "100vh",
+          overflow: "hidden"
+        }}>
+          <div className="col-6 d-none d-lg-block p-0">
+            {/* <img src="/project_request.png" alt="Project Request" className="img-fluid h-100 w-100 p-0"  /> */}
+            <div
+              style={{
+                backgroundImage: "url('/project_request.png')",
+                backgroundSize: 'cover',
+                backgroundPosition: 'center',
+                height: '100vh',
+                width: '100%',
+              }}
+              className="d-flex justify-content-center align-items-center"
+            >
+              <div className="text-center p-5">
+                <h2 className="fw-bold display-5 mb-2">LancerLoom Is Here to Take Your Project Request!</h2>
+                <p className="fs-3">Your Vision, Our Mission</p>
+              </div>
             </div>
+          </div>
 
-            <div className="project-request-card">
-              {showSuccess ? (
-                <Alert variant="success" className="text-center mt-4">
-                  <i className="fas fa-check-circle fa-3x mb-3"></i>
-                  <h4>Thank you for your project request!</h4>
-                  <p>
-                    We have recived your information, please wait until we contact you.
-                  </p>
-                </Alert>
-              ) : (
-                <Form noValidate validated={validated} onSubmit={handleSubmit} id="projectRequestForm">
-                  <Row>
-                    <Col md={6} className="mb-4">
-                      <h4 className="mb-4">Client Information</h4>
-
-                      <Form.Group className="mb-3">
-                        <Form.Label>Full Name *</Form.Label>
-                        <Form.Control
-                          type="text"
-                          id="clientName"
-                          value={formData.clientName}
-                          onChange={handleChange}
-                          required
-                        />
-                        <Form.Control.Feedback type="invalid">Please enter your name.</Form.Control.Feedback>
-                      </Form.Group>
-
-                      <Form.Group className="mb-3">
-                        <Form.Label>Email Address *</Form.Label>
-                        <Form.Control
-                          type="email"
-                          id="clientEmail"
-                          value={formData.clientEmail}
-                          onChange={handleChange}
-                          required
-                        />
-                        <Form.Control.Feedback type="invalid">
-                          Please enter a valid email address.
-                        </Form.Control.Feedback>
-                      </Form.Group>
-
-                      <Form.Group className="mb-3">
-                        <Form.Label>Phone Number</Form.Label>
-                        <Form.Control
-                          type="tel"
-                          id="clientPhone"
-                          value={formData.clientPhone}
-                          onChange={handleChange}
-                        />
-                      </Form.Group>
-
-                      <Form.Group className="mb-3">
-                        <Form.Label>City</Form.Label>
-                        <Form.Control
-                          type="text"
-                          id="city"
-                          value={formData.city}
-                          onChange={handleChange}
-                        />
-                      </Form.Group>
-
-                      <Form.Group className="mb-3">
-                        <Form.Label>State</Form.Label>
-                        <Form.Control
-                          type="text"
-                          id="state"
-                          value={formData.state}
-                          onChange={handleChange}
-                        />
-                      </Form.Group>
-
-                    </Col>
-
-                    <Col md={6} className="mb-4">
-                      <h4 className="mb-4">Project Details</h4>
-
-                      <Form.Group className="mb-3">
-                        <Form.Label>Project Title *</Form.Label>
-                        <Form.Control
-                          type="text"
-                          id="projectTitle"
-                          value={formData.projectTitle}
-                          onChange={handleChange}
-                          required
-                        />
-                        <Form.Control.Feedback type="invalid">Please enter a project title.</Form.Control.Feedback>
-                      </Form.Group>
-
-                      <Form.Group className="mb-3">
-                        <Form.Label>Project Type *</Form.Label>
-                        <Form.Select id="projectType" value={formData.projectType} onChange={handleChange} required>
-                          <option value="" disabled>
-                            Select project type
-                          </option>
-                          <option value="website">Website</option>
-                          <option value="frontend">Frontend Developement</option>
-                          <option value="apiDevelopement">API Developement</option>
-                          <option value="ui/ux">UI/UX Design</option>
-                          <option value="logo">Brand Logo Design</option>
-                        </Form.Select>
-                        <Form.Control.Feedback type="invalid">Please select a project type.</Form.Control.Feedback>
-                      </Form.Group>
-
-                    </Col>
-                  </Row>
-
-                  <Form.Group className="mb-4">
-                    <Form.Label>Project Description *</Form.Label>
-                    <Form.Control
-                      as="textarea"
-                      id="projectDescription"
-                      rows={5}
-                      value={formData.projectDescription}
-                      onChange={handleChange}
-                      required
-                    />
-                    <Form.Control.Feedback type="invalid">Please provide a project description.</Form.Control.Feedback>
-                    <Form.Text className="text-muted">
-                      Please describe your project in detail, including goals, features, and any specific requirements.
-                    </Form.Text>
-                  </Form.Group>
-
-                  <Form.Group className="mb-4">
-                    <Form.Label>Upload Files</Form.Label>
-                    <Form.Control type="file" id="projectFiles" multiple onChange={handleFileChange} />
-                    <Form.Text className="text-muted">
-                      Upload any relevant files (wireframes, mockups, references, etc.). Max 5 files, 10MB each.
-                    </Form.Text>
-                  </Form.Group>
-
-                  <Form.Group className="mb-4">
-                    <Form.Check
-                      type="checkbox"
-                      id="nda"
-                      label="I would like to sign an NDA before discussing project details"
-                      checked={formData.nda}
-                      onChange={handleChange}
-                    />
-                  </Form.Group>
-
-                  <div className="text-center">
-                    <Button type="submit" variant="primary" disabled={isSubmitting}>
-                      {isSubmitting ? "Submitting..." : "Submit Project Request"}
-                    </Button>
+          <div className="col-12 col-lg-6 p-0">
+            <div className="row">
+              <div className="col-12" style={{
+                height: "100vh",
+                overflowY: "scroll"
+              }}>
+                <div>
+                  <div className="card-header bg-primary text-white text-center p-4 sticky" >
+                    <h2 className="card-title mb-0 fw-bold">
+                      <i className="bi bi-file-earmark-text me-2"></i>
+                      Request a Project
+                    </h2>
+                    <p className="mb-0 mt-2 text-white-50">
+                      Fill in the details to submit your project request
+                    </p>
                   </div>
-                </Form>
-              )}
+
+                  <div className="card-body p-4 p-lg-5 bg-dark text-light">
+                    <form onSubmit={handleSubmit}>
+                      {/* Project Title */}
+                      <div className="mb-4">
+                        <label htmlFor="projectTitle" className="form-label ">
+                          <i className="bi bi-bookmark-star me-2"></i>
+                          Project Title <span className="text-danger">*</span>
+                        </label>
+                        <input
+                          type="text"
+                          className="form-control rounded-0 form-control-lg fs-6  shadow-sm"
+                          id="projectTitle"
+                          name="projectTitle"
+                          value={formData.projectTitle}
+                          onChange={handleInputChange}
+                          required
+                          placeholder="Enter your project title"
+                        />
+                      </div>
+
+                      {/* Project Description */}
+                      <div className="mb-4">
+                        <label htmlFor="projectDescription" className="form-label ">
+                          <i className="bi bi-file-text me-2"></i>
+                          Project Description <span className="text-danger">*</span>
+                        </label>
+                        <textarea
+                          className="form-control rounded-0 fs-6 shadow-sm"
+                          id="projectDescription"
+                          name="projectDescription"
+                          rows={4}
+                          value={formData.projectDescription}
+                          onChange={handleInputChange}
+                          required
+                          placeholder="Describe your project in detail"
+                        />
+                      </div>
+
+                      {/* Features */}
+                      <div className="mb-4">
+                        <label htmlFor="features" className="form-label ">
+                          <i className="bi bi-list-check me-2"></i>
+                          Features
+                        </label>
+                        <textarea
+                          className="form-control rounded-0 fs-6  shadow-sm"
+                          id="features"
+                          name="features"
+                          rows={3}
+                          value={formData.features}
+                          onChange={handleInputChange}
+                          placeholder="List the key features (one per line)"
+                        />
+                        <div className="form-text">Add each feature on a new line</div>
+                      </div>
+
+                      {/* Budget and Deadline */}
+                      <div className="row">
+                        <div className="col-md-6 mb-4">
+                          <label htmlFor="budget" className="form-label ">
+                            <i className="bi bi-currency-rupee me-2"></i>
+                            Budget (₹)
+                          </label>
+                          <div className="input-group">
+                            <span className="input-group-text bg-light rounded-0 ">₹</span>
+                            <input
+                              type="number"
+                              className="form-control rounded-0 fs-6  shadow-sm"
+                              id="budget"
+                              name="budget"
+                              value={formData.budget}
+                              onChange={handleInputChange}
+                              min="0"
+                              step="1"
+                              placeholder="Enter amount in Rupees"
+                            />
+                          </div>
+                        </div>
+
+                        <div className="col-md-6 mb-4">
+                          <label htmlFor="deadline" className="form-label ">
+                            <i className="bi bi-calendar-event me-2"></i>
+                            Deadline
+                          </label>
+                          <input
+                            type="date"
+                            className="form-control fs-6 rounded-0 shadow-sm"
+                            id="deadline"
+                            name="deadline"
+                            value={formData.deadline}
+                            onChange={handleInputChange}
+                          />
+                        </div>
+                      </div>
+
+                      {/* Additional Notes */}
+                      <div className="mb-4">
+                        <label htmlFor="additionalNotes" className="form-label ">
+                          <i className="bi bi-pencil-square me-2"></i>
+                          Additional Notes
+                        </label>
+                        <textarea
+                          className="form-control fs-6 rounded-0 shadow-sm"
+                          id="additionalNotes"
+                          name="additionalNotes"
+                          rows={3}
+                          value={formData.additionalNotes}
+                          onChange={handleInputChange}
+                          placeholder="Any additional information or requirements"
+                        />
+                      </div>
+
+                      {/* Attachments */}
+                      <div className="mb-4">
+                        <label htmlFor="attachments" className="form-label ">
+                          <i className="bi bi-paperclip me-2"></i>
+                          Attachments
+                        </label>
+                        <div className="input-group mb-3">
+                          <span className="input-group-text bg-light rounded-0">
+                            <i className="bi bi-file-earmark-arrow-up"></i>
+                          </span>
+                          <input
+                            type="file"
+                            className="form-control rounded-0 fs-6  shadow-sm"
+                            id="attachments"
+                            name="attachments"
+                            onChange={handleFileChange}
+                            multiple
+                            accept=".pdf,.png,.jpg,.jpeg"
+                          />
+                        </div>
+                        <div className="form-text text-light">
+                          <i className="bi bi-info-circle me-1"></i>
+                          Accepted formats: PDF, PNG, JPG, JPEG
+                        </div>
+                      </div>
+
+                      {/* Image Preview */}
+                      {imagePreview.length > 0 && (
+                        <div className="mb-4">
+                          <label className="form-label ">
+                            <i className="bi bi-images me-2"></i>
+                            Image Preview
+                          </label>
+                          <div className="row g-2">
+                            {imagePreview.map((src, index) => (
+                              <div key={index} className="col-6 col-md-4 col-lg-3">
+                                <div className="card border-0 shadow-sm h-100">
+                                  <img
+                                    src={src || "/placeholder.svg"}
+                                    alt={`Preview ${index + 1}`}
+                                    className="card-img-top"
+                                    style={{ height: "120px", objectFit: "cover" }}
+                                  />
+                                  <div className="card-footer bg-light p-2 text-center">
+                                    <small className="text-muted">Image {index + 1}</small>
+                                  </div>
+                                </div>
+                              </div>
+                            ))}
+                          </div>
+                        </div>
+                      )}
+
+                      {/* Submit Button */}
+                      <div className="d-grid gap-2 mt-5">
+                        <button
+                          type="submit"
+                          className="btn btn-primary btn-lg py-2 rounded-0 shadow"
+                          disabled={isSubmitting}
+                        >
+                          {isSubmitting ? (
+                            <>
+                              <span
+                                className="spinner-border spinner-border-sm me-2"
+                                role="status"
+                                aria-hidden="true"
+                              ></span>
+                              Submitting...
+                            </>
+                          ) : (
+                            <>
+                              <i className="bi bi-send-fill me-2"></i>
+                              Submit Project
+                            </>
+                          )}
+                        </button>
+                      </div>
+                    </form>
+                  </div>
+
+                  <div className="card-footer bg-light p-4 text-center">
+                    <p className="mb-0 text-muted">
+                      <i className="bi bi-shield-check me-1"></i>
+                      Your information is secure and will be used only for project evaluation
+                    </p>
+                  </div>
+                </div>
+              </div>
             </div>
-          </Col>
-        </Row>
-      </Container>
-    </section>
+          </div>
+        </div>
+      </div>
+    </div>
   )
 }
 
 export default ProjectRequest
-

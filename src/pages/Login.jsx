@@ -35,6 +35,7 @@ const Login = () => {
         formData,
         {
           headers: { "Content-Type": "application/json" },
+          //withCredentials: true,
         }
       );
       localStorage.setItem("access_token", loginResponse.data.access_token);
@@ -135,7 +136,7 @@ const Login = () => {
             </div>
 
             <div className="text-center mt-4">
-              <Link to="/" className="text-muted">
+              <Link to="/" className="text-light">
                 <i className="fas fa-arrow-left me-1"></i> Back to Home
               </Link>
             </div>
