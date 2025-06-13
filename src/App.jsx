@@ -31,7 +31,7 @@ function App() {
           <Route path="/project-request" element={<ProjectRequest />} />
           <Route path="/forgotPassword-email" element={<Emailfp/>} />
           <Route path="/forgotPassword-otp" element={<Emailotp/>} />
-          <Route path="/forgotPassword-rest" element={<Emailfpreset/>} />
+          <Route path="/forgotPassword-reset" element={<Emailfpreset/>} />
         </Routes>
       </BrowserRouter>
     </>

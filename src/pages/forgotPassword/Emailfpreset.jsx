@@ -49,11 +49,6 @@ export const Emailfpreset = () => {
   const handleResetPassword = async (e) => {
     e.preventDefault()
 
-    if (!username) {
-      setPasswordError("Please enter a username")
-      return
-    }
-
     if (!password) {
       setPasswordError("Please enter a new password")
       return
@@ -74,7 +69,7 @@ export const Emailfpreset = () => {
 
     try {
       const res = await axios.post(
-        "https://api.lancer.drmcetit.com/api/user/signup/",
+        "https://api.lancer.drmcetit.com/api/user/forgetPassword/",
         {
           password,
           confirmPassword,
@@ -92,7 +87,6 @@ export const Emailfpreset = () => {
     } catch (error) {
       console.log(error);
       console.log(error.response);
-      console.log(username);
       console.log(email);
       console.log(otp);
       console.log(password);
@@ -116,7 +110,7 @@ export const Emailfpreset = () => {
               <div className="text-center">
                 <i className="bi bi-key-fill fs-1 text-muted m-0 p-0"></i>
                 <p className="m-0 mt-3">Your identity has been verified.</p>
-                <p className="mb-3">Create your username and password.</p>
+                <p className="mb-3">Reset your new password.</p>
               </div>
 
               <form onSubmit={handleResetPassword}>

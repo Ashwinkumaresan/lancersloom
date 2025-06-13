@@ -4,7 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 
 const Emailfp = () => {
     const [email, setEmail] = useState("");
-    const [purpose, setPurpose] = useState("forgotPassword");
+    const [purpose, setPurpose] = useState("forgetPassword");
     const [emailError, setEmailError] = useState("");
     const [isLoading, setIsLoading] = useState(false);
     const navigate = useNavigate();
@@ -32,7 +32,7 @@ const Emailfp = () => {
         try {
             // Axios request to backend
             const res = await axios.post(
-                "https://api.lancer.drmcetit.com/api/user/forgetPassword/",
+                "https://api.lancer.drmcetit.com/api/user/sendEmail/",
                 { email, purpose },
                 {
                     headers: { "Content-Type": "application/json" },

@@ -97,7 +97,7 @@ export const Emailotp = () => {
       // Store OTP verification status
       sessionStorage.setItem("otpVerified", otp);
       // Navigate to password reset page
-      navigate("/signup-set-password");
+      navigate("/forgotPassword-reset");
     } catch (error) {
       console.error("OTP verification error:", error);
       console.log(otp)
