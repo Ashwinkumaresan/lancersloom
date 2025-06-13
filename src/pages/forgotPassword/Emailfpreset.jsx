@@ -2,8 +2,7 @@ import axios from "axios"
 import { useState, useEffect } from "react"
 import { Link, useNavigate } from "react-router-dom"
 
-export const Signup_password = () => {
-  const [username, setusername] = useState("")
+export const Emailfpreset = () => {
   const [password, setpassword] = useState("")
   const [confirmPassword, setConfirmPassword] = useState("")
   const [passwordError, setPasswordError] = useState("")
@@ -11,12 +10,12 @@ export const Signup_password = () => {
   const [isLoading, setIsLoading] = useState(false)
   const navigate = useNavigate()
 
-  const email = localStorage.getItem("email")
-  const otp = localStorage.getItem("otpVerified")
+  const email = sessionStorage.getItem("email")
+  const otp = sessionStorage.getItem("otpVerified")
 
   useEffect(() => {
     if (!email || !otp) {
-      navigate("/signup-set-password")
+      navigate("/forgotPassword-email")
     }
   }, [email, otp, navigate])
 
@@ -77,7 +76,6 @@ export const Signup_password = () => {
       const res = await axios.post(
         "https://api.lancer.drmcetit.com/api/user/signup/",
         {
-          username,
           password,
           confirmPassword,
           email,
@@ -90,7 +88,7 @@ export const Signup_password = () => {
 
       alert("Password reset successful! You can now login with your new password.")
       navigate("/login")
-      localStorage.clear();
+      sessionStorage.clear();
     } catch (error) {
       console.log(error);
       console.log(error.response);
@@ -112,7 +110,7 @@ export const Signup_password = () => {
         <div className="col-md-6 col-lg-5">
           <div className="card shadow">
             <div className="card-header bg-primary text-white text-center py-3">
-              <h4 className="mb-0">Signup</h4>
+              <h4 className="mb-0">Forgot Password</h4>
             </div>
             <div className="card-body p-4">
               <div className="text-center">
@@ -122,21 +120,6 @@ export const Signup_password = () => {
               </div>
 
               <form onSubmit={handleResetPassword}>
-                {/* username field */}
-                <div className="mb-4">
-                  <label htmlFor="username" className="form-label">
-                    Username
-                  </label>
-                  <input
-                    type="text"
-                    className={`form-control ${passwordError && !username ? "is-invalid" : ""}`}
-                    id="username"
-                    placeholder="Enter your username"
-                    value={username}
-                    onChange={(e) => setusername(e.target.value)}
-                    required
-                  />
-                </div>
 
                 {/* New Password */}
                 <div className="mb-4">
@@ -201,10 +184,10 @@ export const Signup_password = () => {
                     {isLoading ? (
                       <>
                         <span className="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
-                        Creatting...
+                        Resetting...
                       </>
                     ) : (
-                      "Create Account"
+                      "Reset Password"
                     )}
                   </button>
                 </div>

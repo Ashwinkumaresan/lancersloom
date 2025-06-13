@@ -1,10 +1,37 @@
-import { Container, Row, Col, Form, Button } from "react-bootstrap"
-import { Link } from "react-router-dom"
-import { FaTwitter, FaLinkedinIn, FaGithub, FaDribbble, FaInstagram } from "react-icons/fa"
+import React, { useEffect, useRef } from "react";
+import { Container, Row, Col } from "react-bootstrap";
+import { Link } from "react-router-dom";
+import { FaTwitter, FaLinkedinIn, FaGithub, FaDribbble, FaInstagram } from "react-icons/fa";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const Footer = () => {
+  const footerRef = useRef(null);
+
+  useEffect(() => {
+    if (!footerRef.current) return;
+
+    gsap.fromTo(
+      footerRef.current,
+      { opacity: 0, y: 50 },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 1,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: footerRef.current,
+          start: "top 90%",
+          toggleActions: "play none none reverse",
+        },
+      }
+    );
+  }, []);
+
   return (
-    <footer className="footer py-5">
+    <footer className="footer py-5" ref={footerRef}>
       <Container>
         <Row>
           <Col lg={4} className="mb-4 mb-lg-0">
@@ -48,9 +75,9 @@ const Footer = () => {
               <li>
                 <Link to="/#portfolio">Portfolio</Link>
               </li>
-              <li>
+              {/* <li>
                 <Link to="/#testimonials">Testimonials</Link>
-              </li>
+              </li> */}
               <li>
                 <Link to="/#contact">Contact</Link>
               </li>
@@ -60,16 +87,19 @@ const Footer = () => {
             <h5 className="text-white mb-4">Services</h5>
             <ul className="list-unstyled footer-links">
               <li>
+                <a href="#">Landing Page</a>
+              </li>
+              <li>
+                <a href="#">API Development</a>
+              </li>
+              <li>
                 <a href="#">Web Development</a>
               </li>
               <li>
-                <a href="#">API Developement</a>
+                <a href="#">Web Management</a>
               </li>
               <li>
                 <a href="#">UI/UX Design</a>
-              </li>
-              <li>
-                <a href="#">Lms</a>
               </li>
             </ul>
           </Col>
@@ -94,8 +124,7 @@ const Footer = () => {
         </Row>
       </Container>
     </footer>
-  )
-}
+  );
+};
 
-export default Footer
-
+export default Footer;

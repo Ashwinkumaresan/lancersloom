@@ -34,7 +34,9 @@ body {
   line-height: 1.6;
   overflow-x: hidden;
 }
-
+button{
+  opacity: 1;
+}
 a {
   color: var(--primary);
   text-decoration: none;
@@ -46,6 +48,12 @@ a:hover {
 }
 
 /*Hero Section*/
+
+.word-hero {
+  display: inline-block;
+  opacity: 1; /* ensure it's visible after animation */
+}
+
 .hero {
   padding: 10rem 0 5rem;
 }
@@ -70,13 +78,36 @@ a:hover {
   color: white;
 }
 
+/* about */
+.masked-line {
+  overflow: hidden;
+  display: inline-block; 
+  position: relative;
+}
+.secret-text {
+  font-weight: 600;
+  color: #ffffff;
+  text-align: center;
+  line-height: 1.4;
+}
+
 
 /* skills */
-.badge_hover:hover{
+
+.word {
+  display: inline-block;
+  white-space: pre;
+}
+
+.badge_hover {
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.badge_hover:hover {
   background-color: var(--white);
   color: #000000;
-  scale: 1.2;
-  transition: ease 0.2s;
+  transform: scale(1.2);
 }
 
 /*Portfolio Section*/

@@ -1,15 +1,103 @@
 import { Container, Row, Col, Card, Badge, Button } from "react-bootstrap"
 import AOS from "aos";
 import 'aos/dist/aos.css';
-import { useEffect } from "react";
+import { useEffect, useRef, useState } from "react";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import SplitType from "split-type";
 
+
+gsap.registerPlugin(ScrollTrigger);
 const Portfolio = () => {
+  
+  //title portfolio
+  const titleRef = useRef(null);
+  const titleRef2 = useRef(null);
+
   useEffect(() => {
-    AOS.init({
-      duration: 1000,  // animation duration in ms
-      once: true       // whether animation should happen only once
+    const title = titleRef.current;
+    if (!title) return;
+
+    // Split text into spans per word
+    const words = title.innerText.split(" ");
+    title.innerHTML = words
+      .map((word) => `<span class="word">${word}</span>`)
+      .join(" ");
+
+    // Create GSAP timeline with scroll trigger
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: title,
+        start: "top 70%",
+        toggleActions: "play reverse play reverse ",
+      },
     });
+
+    // Animate container fade & slide up
+    tl.from(title, {
+      opacity: 1,
+      y: 0,
+      duration: 0.8,
+      ease: "power2.out",
+    });
+
+    // Animate each word with bounce & scale staggered
+    tl.from(
+      title.querySelectorAll(".word"),
+      {
+        scale: 0.8,
+        opacity: 0,
+        y: 200,
+        ease: "back.out(2)",
+        stagger: 0.12,
+        duration: 0.6,
+      },
+      "-=0.4" // overlap with previous animation
+    );
   }, []);
+
+  useEffect(() => {
+    const title = titleRef2.current;
+    if (!title) return;
+
+    // Split text into spans per word
+    const words = title.innerText.split(" ");
+    title.innerHTML = words
+      .map((word) => `<span class="word">${word}</span>`)
+      .join(" ");
+
+    // Create GSAP timeline with scroll trigger
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: title,
+        start: "top 70%",
+        toggleActions: "play reverse play reverse ",
+      },
+    });
+
+    // Animate container fade & slide up
+    tl.from(title, {
+      opacity: 1,
+      y: 0,
+      duration: 0.8,
+      ease: "power2.out",
+    });
+
+    // Animate each word with bounce & scale staggered
+    tl.from(
+      title.querySelectorAll(".word"),
+      {
+        scale: 0.8,
+        opacity: 0,
+        y: 200,
+        ease: "back.out(2)",
+        stagger: 0.12,
+        duration: 0.6,
+      },
+      "-=0.4" // overlap with previous animation
+    );
+  }, []);
+
   const projects = [
     {
       id: 1,
@@ -64,39 +152,71 @@ const Portfolio = () => {
     },
   ]
 
+  // card animation
+    const cardsRef = useRef([]);
+
+  useEffect(() => {
+    cardsRef.current.forEach((card) => {
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: card,
+          start: "top 85%",
+          toggleActions: "play reverse play reverse",
+        },
+      });
+
+      tl.from(card, {
+        opacity: 1,
+        y: 60,
+        skewX: 10,
+        rotate: 5,
+        duration: 0.6,
+        ease: "power3.out",
+      }).to(card, {
+        skewX: 0,
+        rotate: 0,
+        duration: 0.4,
+        ease: "expo.out",
+      });
+    });
+  }, []);
+
+
+
   return (
     <section id="portfolio" className="p-10">
       <Container>
         <Row className="text-center my-5">
           <Col lg={8} className="mx-auto">
-            <h2 className="display-1 text-center fw-bold" data-aos="fade-up">Our projects!</h2>
-            <h2 className="display-1 text-center fw-bold" data-aos="fade-up">Right infront of you...</h2>
+            <h2 className="display-1 text-center fw-bold"  ref={titleRef}>Our projects!</h2>
+            <h2 className="display-1 text-center fw-bold"  ref={titleRef2}>Right infront of you...</h2>
           </Col>
         </Row>
 
-        <Row className="g-4">
-          {projects.map((project) => (
-            <Col key={project.id} md={6} lg={4}>
-              <Card className="portfolio-item h-100" data-aos="fade-up">
-                <Card.Img variant="top" src={project.image} alt={project.title} data-aos="fade-up"/>
-                <Card.Body>
-                  <Card.Title data-aos="fade-up">{project.title}</Card.Title>
-                  <Card.Text data-aos="fade-up">{project.description}</Card.Text>
-                  <div className="d-flex flex-wrap gap-1 mb-3">
-                    {project.technologies.map((tech, index) => (
-                      <Badge key={index} bg="secondary" data-aos="fade-up">
-                        {tech}
-                      </Badge>
-                    ))}
-                  </div>
-                  {/* <Button href={project.link} variant="outline-primary" size="sm">
-                    View Project
-                  </Button> */}
-                </Card.Body>
-              </Card>
-            </Col>
-          ))}
-        </Row>
+         <div className="row g-4">
+      {projects.map((project, index) => (
+        <div
+          key={project.id}
+          className="col-md-6 col-lg-4"
+          ref={(el) => (cardsRef.current[index] = el)}
+        >
+          <div className="card portfolio-item h-100">
+            <img src={project.image} alt={project.title} className="card-img-top" />
+            <div className="card-body">
+              <h5 className="card-title">{project.title}</h5>
+              <p className="card-text">{project.description}</p>
+              <div className="d-flex flex-wrap gap-1 mb-3">
+                {project.technologies.map((tech, idx) => (
+                  <span key={idx} className="badge bg-secondary">
+                    {tech}
+                  </span>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
 
         <div className="text-center mt-5" data-aos="fade-up">
           <Button variant="outline-light">View All Projects</Button>

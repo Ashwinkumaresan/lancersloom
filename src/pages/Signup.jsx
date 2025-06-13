@@ -111,7 +111,7 @@ const Signup = () => {
             </div>
             <div className="card-footer bg-light text-center py-3">
               <p className="mb-0">
-                Remember your password?{" "}
+                Already have an account?{" "}
                 <Link to="/login" className="text-primary">
                   Login
                 </Link>

@@ -11,6 +11,9 @@ import { SigunupOTP } from './pages/SigunupOTP';
 import { Signup_password } from './pages/Signup_password';
 import ProfileDisplay from './pages/ProfileDisplay';
 import ProfileEdit from './pages/ProfileEdit';
+import Emailfp from './pages/forgotPassword/Emailfp';
+import { Emailotp } from './pages/forgotPassword/Emailotp';
+import { Emailfpreset } from './pages/forgotPassword/Emailfpreset';
 
 function App() {
 
@@ -26,6 +29,9 @@ function App() {
           <Route path='/profile' element={<ProfileDisplay />} />
           <Route path='/profile-edit' element={<ProfileEdit />} />
           <Route path="/project-request" element={<ProjectRequest />} />
+          <Route path="/forgotPassword-email" element={<Emailfp/>} />
+          <Route path="/forgotPassword-otp" element={<Emailotp/>} />
+          <Route path="/forgotPassword-rest" element={<Emailfpreset/>} />
         </Routes>
       </BrowserRouter>
     </>

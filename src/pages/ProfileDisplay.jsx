@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import styled from "styled-components"; // Import styled-components
+import styled from "styled-components";
 
 // Styled components for a few of your CSS classes
 const Card = styled.div`

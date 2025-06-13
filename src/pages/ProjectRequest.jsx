@@ -1,9 +1,11 @@
 import { useState } from "react"
+import { useNavigate } from "react-router-dom"
 
 function ProjectRequest() {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     projectTitle: "",
-    projectDescription: "",
+    projectDesc: "",
     features: "",
     budget: "",
     deadline: "",
@@ -58,30 +60,77 @@ function ProjectRequest() {
     }
   }
 
-  const handleSubmit = (e) => {
-    e.preventDefault()
-    setIsSubmitting(true)
+  const handleSubmit = async (e) => {
+  e.preventDefault();
+  setIsSubmitting(true);
 
-    setTimeout(() => {
-      console.log("Form submitted:", formData)
-      setIsSubmitting(false)
-      alert("Project submitted successfully!")
+  if (!localStorage.getItem("access_token")) {
+    alert("Login requested");
+    // navigate("/login");
+    setIsSubmitting(false);
+    return;
+  }
 
+  try {
+    const token = localStorage.getItem("access_token");
+
+    // create a FormData object for multipart/form-data
+    const payload = new FormData();
+    payload.append("projectTitle", formData.projectTitle);
+    payload.append("projectDesc", formData.projectDesc);
+    payload.append("features", formData.features);
+    payload.append("budget", formData.budget);
+    payload.append("deadline", formData.deadline);
+    payload.append("additionalNotes", formData.additionalNotes);
+
+    // if files are attached, add them
+    if (formData.attachments) {
+      Array.from(formData.attachments).forEach((file) => {
+        payload.append("attachments", file);
+      });
+    }
+
+    // send data via fetch POST
+    const response = await fetch("http://api.lancer.drmcetit.com/api/project/request/", {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+      body: payload,
+    });
+
+    const result = await response.json();
+
+    if (response.ok) {
+      alert("Project submitted successfully!");
+      console.log("Server response:", result);
+
+      // reset form fields
       setFormData({
         projectTitle: "",
-        projectDescription: "",
+        projectDesc: "",
         features: "",
         budget: "",
         deadline: "",
         additionalNotes: "",
         attachments: null,
-      })
-      setImagePreview([])
+      });
+      setImagePreview([]);
 
-      const fileInput = document.getElementById("attachments")
-      if (fileInput) fileInput.value = ""
-    }, 1500)
+      const fileInput = document.getElementById("attachments");
+      if (fileInput) fileInput.value = "";
+    } else {
+      alert(`Submission failed: ${result.message || "Something went wrong."}`);
+      console.error(result);
+    }
+  } catch (error) {
+    console.error("Error submitting form:", error);
+    alert("Something went wrong while submitting the project.");
+  } finally {
+    setIsSubmitting(false);
   }
+};
+
 
   return (
     <div
@@ -153,16 +202,16 @@ function ProjectRequest() {
 
                       {/* Project Description */}
                       <div className="mb-4">
-                        <label htmlFor="projectDescription" className="form-label ">
+                        <label htmlFor="projectDesc" className="form-label ">
                           <i className="bi bi-file-text me-2"></i>
                           Project Description <span className="text-danger">*</span>
                         </label>
                         <textarea
                           className="form-control rounded-0 fs-6 shadow-sm"
-                          id="projectDescription"
-                          name="projectDescription"
+                          id="projectDesc"
+                          name="projectDesc"
                           rows={4}
-                          value={formData.projectDescription}
+                          value={formData.projectDesc}
                           onChange={handleInputChange}
                           required
                           placeholder="Describe your project in detail"
@@ -182,6 +231,7 @@ function ProjectRequest() {
                           rows={3}
                           value={formData.features}
                           onChange={handleInputChange}
+                          required
                           placeholder="List the key features (one per line)"
                         />
                         <div className="form-text">Add each feature on a new line</div>
@@ -206,6 +256,7 @@ function ProjectRequest() {
                               min="0"
                               step="1"
                               placeholder="Enter amount in Rupees"
+                              required
                             />
                           </div>
                         </div>
@@ -221,6 +272,7 @@ function ProjectRequest() {
                             id="deadline"
                             name="deadline"
                             value={formData.deadline}
+                            required
                             onChange={handleInputChange}
                           />
                         </div>
