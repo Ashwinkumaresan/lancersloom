@@ -86,10 +86,13 @@ const Login = () => {
                       />
                     </InputGroup>
                   </Form.Group>
-
+                  
                   <Form.Group className="mb-3">
                     <div className="d-flex justify-content-between align-items-center">
                       <Form.Label>Password</Form.Label>
+                      <Link to="/forgotpassword-email" className="text-primary small">
+                        Forgot Password?
+                      </Link>
                     </div>
                     <InputGroup>
                       <InputGroup.Text>
