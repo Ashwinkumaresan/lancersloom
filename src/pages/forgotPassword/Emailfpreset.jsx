@@ -15,7 +15,7 @@ export const Emailfpreset = () => {
 
   useEffect(() => {
     if (!email || !otp) {
-      navigate("/forgotPassword-email")
+      navigate("/login")
     }
   }, [email, otp, navigate])
 

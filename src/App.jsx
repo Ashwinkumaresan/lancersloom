@@ -14,8 +14,32 @@ import ProfileEdit from './pages/ProfileEdit';
 import Emailfp from './pages/forgotPassword/Emailfp';
 import { Emailotp } from './pages/forgotPassword/Emailotp';
 import { Emailfpreset } from './pages/forgotPassword/Emailfpreset';
+import { useEffect } from 'react';
 
 function App() {
+
+  // clear localStorage when time expired
+  useEffect(() => {
+  const storedTimestamp = localStorage.getItem("timestamp");
+
+  if (storedTimestamp) {
+    const oneDayInMs = 24 * 60 * 60 * 1000;
+    const currentTime = new Date().getTime();
+    const timeDifference = currentTime - storedTimestamp;
+
+    if (timeDifference > oneDayInMs) {
+      // Clear localStorage items if more than 1 day passed
+      localStorage.removeItem("access_token");
+      localStorage.removeItem("refresh_token");
+      localStorage.removeItem("email");
+      localStorage.removeItem("timestamp");
+      console.log("Session expired — localStorage cleared.");
+    }
+  } else {
+    console.log("No timestamp found in localStorage.");
+  }
+}, []);
+
 
   return (
     <>

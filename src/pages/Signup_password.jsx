@@ -16,7 +16,7 @@ export const Signup_password = () => {
 
   useEffect(() => {
     if (!email || !otp) {
-      navigate("/signup-set-password")
+      navigate("/login")
     }
   }, [email, otp, navigate])
 
@@ -88,7 +88,7 @@ export const Signup_password = () => {
         }
       )
 
-      alert("Password reset successful! You can now login with your new password.")
+      alert("Account created successful! You can now login with your new account.")
       navigate("/login")
       localStorage.clear();
     } catch (error) {
