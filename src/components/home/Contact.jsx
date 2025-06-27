@@ -12,7 +12,6 @@ const Contact = () => {
   })
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitSuccess, setSubmitSuccess] = useState(false)
-  const [result, setResult] = useState("");
 
   const handleChange = (e) => {
     const { id, value } = e.target
@@ -22,74 +21,28 @@ const Contact = () => {
     }))
   }
 
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    setIsSubmitting(true)
 
-  // web3forms email
-  const handleSubmit = async (e) => {
-  e.preventDefault();
-  setIsSubmitting(true);
-  setResult("Sending...");
-
-  const formDataObj = new FormData(e.target);
-  formDataObj.append("access_key", "751cab5d-76af-4868-97f4-d4092bfc4d51"); // access key
-
-  try {
-    const response = await fetch("https://api.web3forms.com/submit", {
-      method: "POST",
-      body: formDataObj,
-    });
-
-    const data = await response.json();
-
-    if (data.success) {
-      setResult("Form Submitted Successfully");
-      setSubmitSuccess(true);
+    // Simulate API call
+    setTimeout(() => {
+      setIsSubmitting(false)
+      setSubmitSuccess(true)
       setFormData({
         name: "",
         email: "",
         subject: "",
         message: "",
-      });
-      e.target.reset();
+      })
 
       // Reset success message after 5 seconds
       setTimeout(() => {
-        setSubmitSuccess(false);
-      }, 5000);
-    } else {
-      console.error("Error:", data);
-      setResult(data.message);
-    }
-  } catch (error) {
-    console.error("Fetch error:", error);
-    setResult("Something went wrong. Please try again.");
-  } finally {
-    setIsSubmitting(false);
+        setSubmitSuccess(false)
+      }, 5000)
+    }, 1500)
   }
-};
-
-
-  // const handleSubmit = async (event) => {
-  //   event.preventDefault();
-  //   setResult("Sending....");
-  //   const formData = new FormData(event.target);
-
-  //   formData.append("access_key", "751cab5d-76af-4868-97f4-d4092bfc4d51");
-
-  //   const response = await fetch("https://api.web3forms.com/submit", {
-  //     method: "POST",
-  //     body: formData
-  //   });
-
-  //   const data = await response.json();
-
-  //   if (data.success) {
-  //     setResult("Form Submitted Successfully");
-  //     event.target.reset();
-  //   } else {
-  //     console.log("Error", data);
-  //     setResult(data.message);
-  //   }
-  // };
+  
 
 
   //title contact
@@ -232,30 +185,27 @@ useEffect(() => {
                 <div className="alert alert-success text-center">
                   <h4>Thank you for your message!</h4>
                   <p>I'll get back to you as soon as possible.</p>
-                  <p>{result}</p>
                 </div>
               ) : (
                 <Form onSubmit={handleSubmit} ref={formRef}>
-                  <input type="hidden" name="access_key" value="751cab5d-76af-4868-97f4-d4092bfc4d51"/>
-
                   <Form.Group className="mb-3 form-group">
                     <Form.Label>Name</Form.Label>
-                    <Form.Control type="text" id="name" name="name" value={formData.name} placeholder="Name" onChange={handleChange} required />
+                    <Form.Control type="text" id="name" value={formData.name} placeholder="Name" onChange={handleChange} required />
                   </Form.Group>
 
                   <Form.Group className="mb-3 form-group">
                     <Form.Label>Email</Form.Label>
-                    <Form.Control type="email" id="email" name="email" value={formData.email} placeholder="Email" onChange={handleChange} required />
+                    <Form.Control type="email" id="email" value={formData.email} placeholder="Email" onChange={handleChange} required />
                   </Form.Group>
 
                   <Form.Group className="mb-3 form-group">
                     <Form.Label>Subject</Form.Label>
-                    <Form.Control type="text" id="subject" name="subject" value={formData.subject} placeholder="Subject" onChange={handleChange} required />
+                    <Form.Control type="text" id="subject" value={formData.subject} placeholder="Subject" onChange={handleChange} required />
                   </Form.Group>
 
                   <Form.Group className="mb-3 form-group">
                     <Form.Label>Message</Form.Label>
-                    <Form.Control as="textarea" id="message" name="message" rows={5} value={formData.message} placeholder="Your area..." onChange={handleChange} required />
+                    <Form.Control as="textarea" id="message" rows={5} value={formData.message} placeholder="Your area..." onChange={handleChange} required />
                   </Form.Group>
 
                   <Button type="submit" variant="primary" className="w-100 btn" disabled={isSubmitting}>

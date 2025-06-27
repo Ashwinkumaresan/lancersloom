@@ -229,8 +229,6 @@ const Hero = () => {
       </div>
       {/* offers */}
       <div className="container mt-5 px-5 position-relative offer-div" >
-        <img src="/design_1.svg" className="img-fluid position-absolute bottom-0" alt="" />
-        <img src="/design_1.svg" className="img-fluid position-absolute start-0 top-0" alt="" />
         <div className="row  border offer rounded text-white">
           <div className="col-12 col-md-5">
             <img

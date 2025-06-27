@@ -211,7 +211,10 @@ const Portfolio = () => {
   }, []);
 
   return (
-    <section id="portfolio" className="p-10">
+    <section id="portfolio" className="p-10" style={{
+      width:"100vw",
+      overflowX:"hidden" 
+    }}>
       <Container>
         <Row className="text-center my-5">
           <Col lg={8} className="mx-auto">
