@@ -87,7 +87,6 @@ export const Signup_password = () => {
           headers: { "Content-Type": "application/json" },
         }
       )
-
       alert("Account created successful! You can now login with your new account.")
       navigate("/login")
       localStorage.clear();

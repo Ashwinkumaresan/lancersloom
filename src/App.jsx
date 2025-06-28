@@ -28,15 +28,12 @@ function App() {
     const timeDifference = currentTime - storedTimestamp;
 
     if (timeDifference > oneDayInMs) {
-      // Clear localStorage items if more than 1 day passed
-      localStorage.removeItem("access_token");
-      localStorage.removeItem("refresh_token");
-      localStorage.removeItem("email");
-      localStorage.removeItem("timestamp");
-      console.log("Session expired — localStorage cleared.");
+      localStorage.clear();
+      //console.log("Session expired — localStorage cleared.");
+      alert("Session logged out")
     }
   } else {
-    console.log("No timestamp found in localStorage.");
+    //console.log("No timestamp found in localStorage.");
   }
 }, []);
 

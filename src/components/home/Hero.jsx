@@ -12,6 +12,7 @@ gsap.registerPlugin(ScrollTrigger);
 const Hero = () => {
   const navigate = useNavigate();
   const [fetchData, setFetctData] = useState([]);
+  const [email, setEmail] = useState("");
   
   // gsap animations
   const titleRef = useRef(null);
@@ -209,6 +210,38 @@ const Hero = () => {
   }, []);
 
 
+  // email api
+  const handleSubmit = async () => {
+  if (!email) {
+    alert("Please enter an email");
+    return;
+  }
+
+  const payload = { email };
+
+  try {
+    const response = await axios.post(
+      "https://api.lancer.drmcetit.com/api/project/demo/",
+      payload,
+      {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
+
+    //console.log("Success:", response.data);
+    alert("Demo requested successfully! Visit your mail...");
+    setEmail("");
+  } catch (error) {
+    //console.error("Error:", error);
+    //console.error("Error:", error.response);
+    alert("Failed to request.");
+  }
+};
+
+
+
 
   return (
     <section id="home" className="p-10 mt-5" >
@@ -252,10 +285,12 @@ const Hero = () => {
                   type="text"
                   className="w-100 email_input"
                   placeholder="youremail@gmail.com"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
                   required
                   ref={(el) => (formInputRefHero.current = el)}
                 />
-                <button className="btn btn-primary px-4 py-1" ref={(el) => (formButtonRefHero.current = el)}>Send</button>
+                <button className="btn btn-primary px-4 py-1" ref={(el) => (formButtonRefHero.current = el)} onClick={handleSubmit}>Send</button>
               </form>
             </div>
           </div>

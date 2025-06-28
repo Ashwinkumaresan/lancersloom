@@ -463,10 +463,10 @@ const ProfileEdit = () => {
       });
 
       alert("Profile updated successfully!");
-      navigate("/profile"); // Navigate back to profile display
+      navigate("/profile"); 
     } catch (error) {
-      console.error("Error updating profile:", error);
-      console.log(payload);
+      //console.error("Error updating profile:", error);
+      //console.log(payload);
       
       if (error.response && error.response.data && error.response.data.message) {
         setApiError(error.response.data.message);

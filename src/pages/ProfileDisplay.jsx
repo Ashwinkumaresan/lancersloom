@@ -112,7 +112,7 @@ const ProfileDisplay = () => {
                 },
             });
             const data = response.data;
-            console.log(data)
+            //console.log(data)
             setProfileData({
                 fullName: data.fullName || "",
                 userName: data.username || "",
@@ -128,12 +128,13 @@ const ProfileDisplay = () => {
             });
         } catch (error) {
             if(error.response  && error.response.status === 401){
-                console.log("Cleaning local storage");
+                //console.log("Cleaning local storage");
+                alert("Unauthorized")
                 localStorage.clear();
                 navigate("/login")
             }
             else{
-                console.error("Error fetching student data:", error);
+                //console.error("Error fetching student data:", error);
             }
         }
     };

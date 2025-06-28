@@ -2,6 +2,7 @@ import { Container, Row, Col, Form, Button } from "react-bootstrap"
 import { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import axios from "axios";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -21,28 +22,47 @@ const Contact = () => {
     }))
   }
 
-  const handleSubmit = (e) => {
-    e.preventDefault()
-    setIsSubmitting(true)
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setIsSubmitting(true);
 
-    // Simulate API call
-    setTimeout(() => {
-      setIsSubmitting(false)
-      setSubmitSuccess(true)
+    try {
+      const response = await axios.post(
+        "https://api.lancer.drmcetit.com/api/project/query/",
+        formData,
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+
+      //console.log("Success:", response.data);
+      alert("Form submitted successfully! Visit your mail...");
+      setSubmitSuccess(true);
+
+      // Clear the form
       setFormData({
         name: "",
         email: "",
         subject: "",
         message: "",
-      })
+      });
 
       // Reset success message after 5 seconds
       setTimeout(() => {
-        setSubmitSuccess(false)
-      }, 5000)
-    }, 1500)
-  }
-  
+        setSubmitSuccess(false);
+      }, 5000);
+    } catch (error) {
+      //console.error("Error:", error);
+      if (error.response) {
+        //console.error("Response Error:", error.response.data);
+      }
+      alert("Failed to submit form.");
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
 
 
   //title contact
@@ -136,37 +156,37 @@ const Contact = () => {
   //animation form
   const formRef = useRef(null);
 
-useEffect(() => {
-  if (!formRef.current) return;
+  useEffect(() => {
+    if (!formRef.current) return;
 
-  const formElements = formRef.current.querySelectorAll(".form-group, .btn");
+    const formElements = formRef.current.querySelectorAll(".form-group, .btn");
 
-  const tl = gsap.timeline({
-    scrollTrigger: {
-      trigger: formRef.current,
-      start: "top 80%",
-      // markers: true, // optional for debugging scroll trigger
-      toggleActions: "play reverse play reverse",
-    },
-  });
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: formRef.current,
+        start: "top 80%",
+        // markers: true, // optional for debugging scroll trigger
+        toggleActions: "play reverse play reverse",
+      },
+    });
 
-  tl.fromTo(
-    formElements,
-    { opacity: 0, y: 40 },  // initial hidden + down
-    {
-      opacity: 1,
-      y: 0,                  // final visible + normal position
-      duration: 0.6,
-      ease: "power2.out",
-      stagger: 0.15,
-    }
-  );
+    tl.fromTo(
+      formElements,
+      { opacity: 0, y: 40 },  // initial hidden + down
+      {
+        opacity: 1,
+        y: 0,                  // final visible + normal position
+        duration: 0.6,
+        ease: "power2.out",
+        stagger: 0.15,
+      }
+    );
 
-  return () => {
-    // Clean up ScrollTrigger on unmount
-    tl.scrollTrigger.kill();
-  };
-}, []);
+    return () => {
+      // Clean up ScrollTrigger on unmount
+      tl.scrollTrigger.kill();
+    };
+  }, []);
 
   return (
     <section id="contact" className="py-5">

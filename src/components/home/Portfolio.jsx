@@ -203,7 +203,7 @@ const Portfolio = () => {
 
         setProjects(formattedProjects);
       } catch (error) {
-        console.error("Error fetching data:", error.response?.data || error.message);
+        //console.error("Error fetching data:", error.response?.data || error.message);
       }
     };
 

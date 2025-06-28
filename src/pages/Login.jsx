@@ -45,12 +45,17 @@ const Login = () => {
       navigate("/");
     } catch (error) {
       if (error.response) {
-        console.error("Error status:", error.response.status);
-        console.error("Error message:", error.response.data);
+        //console.error("Error status:", error.response.status);
+        //console.error("Error message:", error.response.data);
+        alert(
+          error.response?.data?.message ||
+          error.response?.data?.detail ||
+          "Something went wrong."
+        );
       } else if (error.request) {
-        console.error("No response received:", error.request);
+        //console.error("No response received:", error.request);
       } else {
-        console.error("Error setting up request:", error.message);
+        //console.error("Error setting up request:", error.message);
       }
     } finally {
       setIsSubmitting(false);
@@ -86,7 +91,7 @@ const Login = () => {
                       />
                     </InputGroup>
                   </Form.Group>
-                  
+
                   <Form.Group className="mb-3">
                     <div className="d-flex justify-content-between align-items-center">
                       <Form.Label>Password</Form.Label>
