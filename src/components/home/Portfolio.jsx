@@ -31,7 +31,7 @@ const Portfolio = () => {
       scrollTrigger: {
         trigger: title,
         start: "top 70%",
-        toggleActions: "play reverse play reverse ",
+        toggleActions: "play none none none ",
       },
     });
 
@@ -73,7 +73,7 @@ const Portfolio = () => {
       scrollTrigger: {
         trigger: title,
         start: "top 70%",
-        toggleActions: "play reverse play reverse ",
+        toggleActions: "play none none none ",
       },
     });
 
@@ -165,7 +165,7 @@ const Portfolio = () => {
       scrollTrigger: {
         trigger: card,
         start: "top 85%",
-        toggleActions: "play reverse play reverse",
+        toggleActions: "play none none none",
       },
     });
 
@@ -200,7 +200,8 @@ const Portfolio = () => {
           technologies: project.techStack.map((t) => t.tech),
           deadline: project.deadline
         }));
-
+        console.log(response.data);
+        
         setProjects(formattedProjects);
       } catch (error) {
         //console.error("Error fetching data:", error.response?.data || error.message);

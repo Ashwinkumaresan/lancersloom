@@ -84,7 +84,7 @@ const Contact = () => {
       scrollTrigger: {
         trigger: title,
         start: "top 70%",
-        toggleActions: "play reverse play reverse ",
+        toggleActions: "play none none none ",
       },
     });
 
@@ -126,7 +126,7 @@ const Contact = () => {
       scrollTrigger: {
         trigger: title,
         start: "top 70%",
-        toggleActions: "play reverse play reverse ",
+        toggleActions: "play none none none ",
       },
     });
 
@@ -166,7 +166,7 @@ const Contact = () => {
         trigger: formRef.current,
         start: "top 80%",
         // markers: true, // optional for debugging scroll trigger
-        toggleActions: "play reverse play reverse",
+        toggleActions: "play none none none",
       },
     });
 

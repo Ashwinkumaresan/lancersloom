@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
 
 function ProjectRequest() {
@@ -59,14 +59,19 @@ function ProjectRequest() {
       setImagePreview([])
     }
   }
-
+  useEffect(()=>{
+    if (!localStorage.getItem("access_token")) {
+    navigate("/login");
+    return;
+  }
+  }, [])
   const handleSubmit = async (e) => {
   e.preventDefault();
   setIsSubmitting(true);
 
   if (!localStorage.getItem("access_token")) {
     alert("Login requested");
-    // navigate("/login");
+    navigate("/login");
     setIsSubmitting(false);
     return;
   }
@@ -181,6 +186,7 @@ function ProjectRequest() {
                   </div>
 
                   <div className="card-body p-4 p-lg-5 bg-dark text-light">
+                    <p className="alert alert-info py-2">Note: Please verify that you have filled the profile page.</p>
                     <form onSubmit={handleSubmit}>
                       {/* Project Title */}
                       <div className="mb-4">

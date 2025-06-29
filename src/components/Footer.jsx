@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import { FaTwitter, FaLinkedinIn, FaGithub, FaDribbble, FaInstagram } from "react-icons/fa";
+import { FaTwitter, FaLinkedinIn, FaGithub, FaDribbble, FaInstagram, FaWhatsapp } from "react-icons/fa";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -24,7 +24,7 @@ const Footer = () => {
         scrollTrigger: {
           trigger: footerRef.current,
           start: "top 90%",
-          toggleActions: "play none none reverse",
+          toggleActions: "play none none none",
         },
       }
     );
@@ -39,23 +39,23 @@ const Footer = () => {
               Lancers<span className="text-primary">Loom</span>
             </h4>
             <p className="text-white-50 mb-4">
-              Freelance Web Developer & Designer specializing in creating beautiful, functional websites and
+              <strong>Lancersloom</strong> Web Developer & Designer specializing in creating beautiful, functional websites and
               applications.
             </p>
             <div className="social-icons">
-              <a href="#" className="me-3">
+              {/* <a href="#" className="me-3">
                 <FaTwitter />
-              </a>
-              <a href="#" className="me-3">
+              </a> */}
+              <a href="https://www.linkedin.com/in/lancersloom-lancersloom-134b33371/" className="me-3">
                 <FaLinkedinIn />
               </a>
-              <a href="#" className="me-3">
+              {/* <a href="#" className="me-3">
                 <FaGithub />
+              </a> */}
+              <a href="https://wa.me/916374766864" target="_blank" rel="noopener noreferrer" className="me-3">
+                <FaWhatsapp />
               </a>
-              <a href="#" className="me-3">
-                <FaDribbble />
-              </a>
-              <a href="#">
+              <a href="https://www.instagram.com/lancersloom/">
                 <FaInstagram />
               </a>
             </div>
@@ -87,40 +87,49 @@ const Footer = () => {
             <h5 className="text-white mb-4">Services</h5>
             <ul className="list-unstyled footer-links">
               <li>
-                <a href="#">Landing Page</a>
+                Landing Page
               </li>
               <li>
-                <a href="#">API Development</a>
+                API Development
               </li>
               <li>
-                <a href="#">Web Development</a>
+                Web Development
               </li>
               <li>
-                <a href="#">Web Management</a>
+                Web Management
               </li>
               <li>
-                <a href="#">UI/UX Design</a>
+                UI/UX Design
               </li>
             </ul>
           </Col>
           <Col md={4} lg={4}>
             <h5 className="text-white mb-4">Be Free To Contact Us</h5>
-            <p className="text-white-50 mb-3">Ph: +91 XXXXX XXXXX</p>
+            <p className="text-white-50 mb-3">
+              <a href="tel:+916374766864" className="text-white-50 text-decoration-none">
+                📞 +91 63747 66864
+              </a>
+            </p>
+            <p className="text-white-50 mb-3">
+              <a href="tel:+919345857852" className="text-white-50 text-decoration-none">
+                📞 +91 93458 57852
+              </a>
+            </p>
           </Col>
         </Row>
         <hr className="mt-5 mb-4 border-secondary" />
         <Row className="align-items-center">
-          <Col md={6} className="text-center text-md-start">
-            <p className="text-white-50 mb-0">&copy; {new Date().getFullYear()} Freelancer's. All rights reserved.</p>
+          <Col className="text-center">
+            <p className="text-white-50 mb-0">&copy; {new Date().getFullYear()} Lancersloom. All rights reserved.</p>
           </Col>
-          <Col md={6} className="text-center text-md-end mt-3 mt-md-0">
+          {/* <Col md={6} className="text-center text-md-end mt-3 mt-md-0">
             <a href="#" className="text-white-50 text-decoration-none me-3">
               Privacy Policy
             </a>
             <a href="#" className="text-white-50 text-decoration-none">
               Terms of Service
             </a>
-          </Col>
+          </Col> */}
         </Row>
       </Container>
     </footer>

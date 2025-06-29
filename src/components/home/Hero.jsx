@@ -32,7 +32,7 @@ const Hero = () => {
       scrollTrigger: {
         trigger: title,
         start: "top 70%",
-        toggleActions: "play reverse play reverse ",
+        toggleActions: "play none none none ",
       },
     });
 
@@ -82,7 +82,7 @@ const Hero = () => {
           scrollTrigger: {
             trigger: btn,
             start: "top 90%",
-            toggleActions: "play reverse play reverse",
+            toggleActions: "play none none none",
             // markers: true,  // Uncomment to debug
           },
         }
@@ -108,7 +108,7 @@ const Hero = () => {
         scrollTrigger: {
           trigger: imageRef.current,
           start: "top 40%",
-          toggleActions: "play reverse play reverse",
+          toggleActions: "play none none none",
           // markers: true, // Uncomment to debug
         },
       }
@@ -135,7 +135,7 @@ const Hero = () => {
         scrollTrigger: {
           trigger: offerImgRef.current,
           start: "top 85%",
-          toggleActions: "play reverse play reverse",
+          toggleActions: "play none none none",
         },
       }
     );
@@ -153,7 +153,7 @@ const Hero = () => {
         scrollTrigger: {
           trigger: headingRefs.current[0],
           start: "top 85%",
-          toggleActions: "play reverse play reverse",
+          toggleActions: "play none none none",
         },
       }
     );
@@ -170,7 +170,7 @@ const Hero = () => {
         scrollTrigger: {
           trigger: paraRef.current,
           start: "top 85%",
-          toggleActions: "play reverse play reverse",
+          toggleActions: "play none none none",
         },
       }
     );
@@ -185,7 +185,7 @@ const Hero = () => {
         scrollTrigger: {
           trigger: formInputRefHero.current,
           start: "top 85%",
-          toggleActions: "play reverse play reverse",
+          toggleActions: "play none none none",
         },
       }
     );
@@ -203,7 +203,7 @@ const Hero = () => {
         scrollTrigger: {
           trigger: formButtonRefHero.current,
           start: "top 85%",
-          toggleActions: "play reverse play reverse",
+          toggleActions: "play none none none",
         },
       }
     );
@@ -247,14 +247,14 @@ const Hero = () => {
     <section id="home" className="p-10 mt-5" >
       <div className="container w-100 h-100 ">
         <div className="row">
-          <h1 className="display-1 p-4 text-md-center fw-bold" ref={titleRef}>Make sure your profession is updated with the <span className="text-primary"> current technology </span></h1>
+          <h1 className="display-1 p-4 text-center fw-bold" ref={titleRef}>Make sure your profession is updated with the <span className="text-primary"> current technology </span></h1>
           <div className="text-center">
-            <button onClick={() => navigate("/project-request")} className="btn btn-light mx-2 px-4 py-2 my-2" ref={(el) => (buttonsRef.current[1] = el)}>Request a project</button>
+            <button onClick={() => navigate("/project-request")} className="btn btn-light mx-2 px-4 py-2 my-2" ref={(el) => (buttonsRef.current[1] = el)}>Bring Your Idea to Life</button>
             <button className="btn" style={{
               outline:"none",
               border:"none",
             }} ref={(el) => (buttonsRef.current[2] = el)}>
-              <a href="#portfolio" className="btn btn-outline-light mx-2 px-4 btn-lg py-1 my-2">View our work</a>
+              <a href="#portfolio" className="btn btn-outline-light mx-2 px-4 py-2 my-2">Browse Our Portfolio</a>
             </button>
           </div>
           <img src="/Hero.svg" data-aos="fade-up" className="img-fluid" alt="Hero" ref={(el) => (imageRef.current = el)} />

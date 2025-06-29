@@ -1,5 +1,5 @@
 import { Container, Row, Col } from "react-bootstrap"
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import { FaCheckCircle, FaCertificate } from "react-icons/fa"
 import AOS from "aos";
 import 'aos/dist/aos.css';
@@ -12,6 +12,7 @@ import SplitType from "split-type";
 gsap.registerPlugin(ScrollTrigger);
 
 const About = () => {
+  const navigate = useNavigate()
 
   //title about
   const titleRef = useRef(null);
@@ -31,7 +32,7 @@ const About = () => {
       scrollTrigger: {
         trigger: title,
         start: "top 70%",
-        toggleActions: "play reverse play reverse ",
+        toggleActions: "play none none none ",
       },
     });
 
@@ -63,65 +64,65 @@ const About = () => {
   const aboutDesktopRef = useRef(null);
   const aboutMobileRef = useRef(null);
 
- useEffect(() => {
-  // Desktop image from left
-  gsap.fromTo(
-    aboutDesktopRef.current,
-    { opacity: 0, x: 100 },
-    {
-      opacity: 1,
-      x: 0,
-      duration: 1,
-      ease: "power2.out",
-      scrollTrigger: {
-        trigger: aboutDesktopRef.current,
-        start: "top 85%",
-        toggleActions: "play reverse play reverse",
-      },
-    }
-  );
+  useEffect(() => {
+    // Desktop image from left
+    gsap.fromTo(
+      aboutDesktopRef.current,
+      { opacity: 0, x: 100 },
+      {
+        opacity: 1,
+        x: 0,
+        duration: 1,
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: aboutDesktopRef.current,
+          start: "top 85%",
+          toggleActions: "play none none none",
+        },
+      }
+    );
 
-  // Mobile image from left
-  gsap.fromTo(
-    aboutMobileRef.current,
-    { opacity: 0, x: 100 },
-    {
-      opacity: 1,
-      x: 0,
-      duration: 1,
-      ease: "power2.out",
-      scrollTrigger: {
-        trigger: aboutMobileRef.current,
-        start: "top 85%",
-        toggleActions: "play reverse play reverse",
-      },
-    }
-  );
-}, []);
+    // Mobile image from left
+    gsap.fromTo(
+      aboutMobileRef.current,
+      { opacity: 0, x: 100 },
+      {
+        opacity: 1,
+        x: 0,
+        duration: 1,
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: aboutMobileRef.current,
+          start: "top 85%",
+          toggleActions: "play none none none",
+        },
+      }
+    );
+  }, []);
 
-//about para
-// const secretRef = useRef(null);
+  //about para
+  // const secretRef = useRef(null);
 
-//   useEffect(() => {
-//     if (!secretRef.current) return;
+  //   useEffect(() => {
+  //     if (!secretRef.current) return;
 
-//     gsap.fromTo(
-//       secretRef.current,
-//       { clipPath: "inset(0 100% 0 0)" }, // hide fully from right
-//       {
-//         clipPath: "inset(0 0% 0 0)", // reveal fully
-//         duration: 1.5,
-//         ease: "power3.out",
-//         scrollTrigger: {
-//           trigger: secretRef.current,
-//           start: " 80%",
-//           toggleActions: "play reverse play reverse", // play when visible, reverse on scroll out
-//         },
-//       }
-//     );
-//   }, []);
+  //     gsap.fromTo(
+  //       secretRef.current,
+  //       { clipPath: "inset(0 100% 0 0)" }, // hide fully from right
+  //       {
+  //         clipPath: "inset(0 0% 0 0)", // reveal fully
+  //         duration: 1.5,
+  //         ease: "power3.out",
+  //         scrollTrigger: {
+  //           trigger: secretRef.current,
+  //           start: " 80%",
+  //           toggleActions: "play none none none", // play when visible, reverse on scroll out
+  //         },
+  //       }
+  //     );
+  //   }, []);
 
-const textRef = useRef(null);
+  const textRef = useRef(null);
 
   useEffect(() => {
     // Split the text into individual chars
@@ -147,20 +148,30 @@ const textRef = useRef(null);
 
 
   return (
-    <section id="about" className="p-10" style={{overflow:"hidden"}}>
-      <Container style={{overflow:"hidden"}}>
+    <section id="about" className="p-10" style={{ overflow: "hidden" }}>
+      <Container style={{ overflow: "hidden" }}>
         <div className="row">
           <div className="col-12 col-md-6 ">
             <div>
-            <h2 className="mt-5 display-1 fw-bold" ref={titleRef}>About US</h2>
-            <div className="secret-text-container">
-            <p className="masked-line justify secret-text" ref={textRef}>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Adipisci, amet odio perspiciatis dolores nam inventore pariatur possimus optio aperiam voluptas modi doloremque minus! Sunt, laudantium voluptatem quidem quibusdam eveniet aspernatur eligendi. Placeat quo doloribus assumenda neque doloremque, dolorem qui blanditiis debitis perferendis. Harum asperiores voluptatibus molestias iure, commodi explicabo neque illum ad exercitationem ea deserunt quaerat consectetur perferendis nesciunt repellat suscipit fuga alias voluptates possimus veniam? Dolorum autem dicta odio vero illo exercitationem maxime porro natus? Beatae quidem consequuntur illo voluptate dolor.</p>
-            </div>
+              <h2 className="mt-5 display-1 fw-bold" ref={titleRef}>About US</h2>
+              <div className="secret-text-container">
+                <p><strong>Lancersloom</strong> is your go-to creative and tech solutions hub, dedicated to enhancing your digital presence in this fast-paced, technology-driven world. We specialize in delivering professional freelancing services tailored to suit individual and business needs.</p>
+                <ul>
+                  <li>Freelancing Solutions for diverse digital projects.</li>
+                  <li>Logo Design Services to craft unique, brand-focused identities.</li>
+                  <li>API Integrations to seamlessly connect your digital tools.</li>
+                  <li>Modern UI Designs that combine functionality with aesthetic appeal.</li>
+                  <li>Landing Pages & Personal Portfolios to showcase your work and services effectively.</li>
+                </ul>
+                <p>At <strong>Lancersloom</strong>, we blend creativity with technology to help you stand out, upgrade your brand, and connect with your audience.
+                </p>
+                <button className="btn btn-light w-100" onClick={ () => navigate("/project-request")}>Let's Build Your's</button>
+              </div>
             </div>
           </div>
           <div className="col-12 col-md-6">
-           <img src="/About.png" className="d-none d-md-block" ref={aboutDesktopRef} width={"800"} alt="About" />
-           <img src="/About.png" className="img-fluid d-block d-md-none" ref={aboutMobileRef} width={"800"} alt="About" />
+            <img src="/About.png" className="d-none d-md-block" ref={aboutDesktopRef} width={"800"} alt="About" />
+            <img src="/About.png" className="img-fluid d-block d-md-none" ref={aboutMobileRef} width={"800"} alt="About" />
           </div>
         </div>
       </Container>

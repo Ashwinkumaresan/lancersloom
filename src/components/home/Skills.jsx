@@ -21,7 +21,7 @@ const Skills = () => {
       scrollTrigger: {
         trigger: headingsRef.current[0].parentNode,
         start: "top 80%",
-        toggleActions: "play reverse play reverse", // toggle animation both direction
+        toggleActions: "play none none none", // toggle animation both direction
       },
       onComplete: () => {
         headingsRef.current.forEach((el) => el.style.transform = "");
@@ -48,7 +48,7 @@ const Skills = () => {
         scrollTrigger: {
           trigger: heading,
           start: "top 70%",
-          toggleActions: "play reverse play reverse",
+          toggleActions: "play none none none",
         },
       });
     });
@@ -89,7 +89,7 @@ const Skills = () => {
       scrollTrigger: {
         trigger: title,
         start: "top 70%",
-        toggleActions: "play reverse play reverse ",
+        toggleActions: "play none none none ",
       },
     });
 
@@ -133,7 +133,7 @@ const Skills = () => {
       scrollTrigger: {
         trigger: title,
         start: "top 70%",
-        toggleActions: "play reverse play reverse ",
+        toggleActions: "play none none none ",
       },
     });
 
@@ -178,7 +178,7 @@ const Skills = () => {
         scrollTrigger: {
           trigger: cardsRef.current[0],
           start: "top 90%",
-          toggleActions: "play reverse play reverse",
+          toggleActions: "play none none none",
         },
       }
     );
@@ -197,7 +197,7 @@ const Skills = () => {
           scrollTrigger: {
             trigger: card,
             start: "top 90%",
-            toggleActions: "play reverse play reverse",
+            toggleActions: "play none none none",
           },
         }
       );
@@ -207,20 +207,21 @@ const Skills = () => {
   const cardContents = [
     {
       title: "Unlimited Components:",
-      text: "Clarity gives you the blocks & components you need to create a website.",
+      text: "Get access to a vast library of reusable components and design blocks to quickly build and customize your website."
     },
     {
       title: "Build Website:",
-      text: "Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint.",
+      text: "Easily design and launch responsive, professional websites without the hassle of starting from scratch."
     },
     {
       title: "Easy Analytics:",
-      text: "Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint.",
+      text: "Track your website's traffic, user engagement, and performance metrics with simple, integrated analytics tools."
     },
     {
       title: "Release Fast:",
-      text: "Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint.",
-    },
+      text: "Speed up your development workflow and launch projects in record time with efficient tools and prebuilt layouts."
+    }
+
   ];
 
 
