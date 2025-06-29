@@ -46,7 +46,7 @@ const countries = [
 
 // --- Styled Components ---
 const Card = styled.div`
-  background-color: var(--dark-card) !important;
+  background-color: var(--white) !important;
   border-radius: 8px !important;
   box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3), 0 10px 10px -5px rgba(0, 0, 0, 0.1) !important;
   backdrop-filter: blur(10px);
@@ -64,17 +64,17 @@ const CardHeader = styled.div`
 `;
 
 const CardBody = styled.div`
-  background-color: var(--dark-card) !important;
-  color: var(--text-primary) !important;
+  background-color: var(--white) !important;
+  color: var(--dark) !important;
   padding: 1.5rem;
 `;
 
 const ProfileSection = styled.div`
-  background: rgba(26, 26, 26, 0.5);
+  background: rgba(242, 242, 242, 0.5);
   border-radius: 8px;
   padding: 2rem;
   margin-bottom: 2rem;
-  border: 1px solid var(--dark-border);
+  border: 1px solid gray;
   backdrop-filter: blur(10px);
 
   @media (max-width: 768px) {
@@ -83,7 +83,6 @@ const ProfileSection = styled.div`
 `;
 
 const SectionTitle = styled.h4`
-  color: var(--text-primary);
   font-weight: 700;
   font-size: 1.5rem;
   margin-bottom: 1.5rem;
@@ -113,7 +112,6 @@ const FormGroup = styled.div`
 const FormLabel = styled.label`
   display: block;
   margin-bottom: 0.5rem;
-  color: var(--text-secondary);
   font-weight: 600;
 `;
 
@@ -124,8 +122,6 @@ const FormControl = styled.input`
   font-size: 1rem;
   font-weight: 400;
   line-height: 1.5;
-  color: var(--text-primary);
-  background-color: var(--dark-bg-light);
   background-clip: padding-box;
   border: 1px solid var(--dark-border);
   border-radius: 0.375rem;
@@ -137,7 +133,6 @@ const FormControl = styled.input`
   }
 
   &:focus {
-    color: var(--text-primary);
     background-color: var(--dark-bg-light);
     border-color: var(--accent-color);
     outline: 0;
@@ -161,7 +156,6 @@ const FormSelect = styled.select`
   font-size: 1rem;
   font-weight: 400;
   line-height: 1.5;
-  color: var(--text-primary);
   background-color: var(--dark-bg-light);
   background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23343a40' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/%3e%3c/svg%3e");
   background-repeat: no-repeat;
@@ -211,8 +205,7 @@ const SaveButton = styled.button`
 `;
 
 const BackButton = styled.button`
-  background-color: var(--dark-bg-light);
-  color: var(--text-primary);
+  background-color: var(--white);
   padding: 0.75rem 1.5rem;
   border: 1px solid var(--dark-border);
   border-radius: 0.375rem;
@@ -220,7 +213,7 @@ const BackButton = styled.button`
   transition: all 0.2s ease-in-out;
 
   &:hover {
-    background-color: var(--dark-border);
+    background-color: gray;
   }
 `;
 
@@ -653,9 +646,9 @@ const ProfileEdit = () => {
                           onChange={handleInputChange}
                           className={errors.country ? "is-invalid" : ""}
                         >
-                          <option value="" className="bg-dark text-white" >Select a country</option>
+                          <option value="" className=" text-dark" >Select a country</option>
                           {countries.map((country) => (
-                            <option key={country.code} value={country.name} className="bg-dark text-white">
+                            <option key={country.code} value={country.name} className=" text-dark">
                               {country.name} ({country.phoneCode})
                             </option>
                           ))}

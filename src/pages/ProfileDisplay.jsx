@@ -5,7 +5,7 @@ import styled from "styled-components";
 
 // Styled components for a few of your CSS classes
 const Card = styled.div`
-  background-color: var(--dark-card) !important;
+  background-color: var(--white) !important;
   border-radius: 8px !important;
   box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3), 0 10px 10px -5px rgba(0, 0, 0, 0.1) !important;
   backdrop-filter: blur(10px);
@@ -19,16 +19,16 @@ const CardHeader = styled.div`
 `;
 
 const CardBody = styled.div`
-  background-color: var(--dark-card) !important;
-  color: var(--text-primary) !important;
+  background-color: var(--white) !important;
+  color: var(--dark) !important;
 `;
 
 const ProfileSection = styled.div`
-  background: rgba(26, 26, 26, 0.5);
+  background: rgba(242, 242, 242, 0.5);
   border-radius: 8px;
   padding: 2rem;
   margin-bottom: 2rem;
-  border: 1px solid var(--dark-border);
+  border: 1px solid grey;
   backdrop-filter: blur(10px);
 
   @media (max-width: 768px) {
@@ -37,7 +37,6 @@ const ProfileSection = styled.div`
 `;
 
 const SectionTitle = styled.h4`
-  color: var(--text-primary);
   font-weight: 700;
   font-size: 1.5rem;
   margin-bottom: 1.5rem;
@@ -147,9 +146,9 @@ const ProfileDisplay = () => {
         <div className="container py-5">
             <div className="row justify-content-center">
                 <div className="col-lg-10">
-                        <div className="d-flex justify-content-between align-items-center mb-4 sticky">
+                        <div className="d-flex justify-content-between align-items-center mb-4 sticky px-4">
                             <p className="display-5 fw-bold">Customer Profile</p>
-                            <button className="btn btn-outline-light" onClick={() => navigate("/")}>
+                            <button className="btn btn-outline-dark" onClick={() => navigate("/")}>
                                 <i className="bi bi-house"></i>
                             </button>
                         </div>
@@ -269,9 +268,6 @@ const ProfileDisplay = () => {
                                 </div>
                             </div>
                         </CardBody>
-
-                        {/* Note: CardFooter, form-control, form-select, etc. are not converted to styled-components in this example.
-                They would follow a similar pattern if you choose to convert them. */}
                         <div className="card-footer p-3">
                             <div className="d-flex justify-content-between">
                                 <button className="btn btn-secondary" onClick={() => navigate("/")}>
