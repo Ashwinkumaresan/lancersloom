@@ -93,15 +93,15 @@ export const Emailotp = () => {
           headers: { "Content-Type": "application/json" },
         }
       );
-      console.log("Server Response:", res.data);
+      //console.log("Server Response:", res.data);
       // Store OTP verification status
       sessionStorage.setItem("otpVerified", otp);
       // Navigate to password reset page
       navigate("/forgotPassword-reset");
     } catch (error) {
-      console.error("OTP verification error:", error);
-      console.log(otp)
-      console.log(email)
+      //console.error("OTP verification error:", error);
+      //console.log(otp)
+      //console.log(email)
       setOtpError("Invalid OTP or verification failed. Please try again.");
     } finally {
       setIsLoading(false);

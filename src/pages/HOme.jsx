@@ -31,7 +31,7 @@ export const Home = () => {
             className="floating-animation"
             style={{ width: '120px', height: '120px' }}
           />
-          <p className='typing-animation' >Tailoring Your Technologies...</p>
+          <p className='typing-animation' ><strong>Tailoring Your Technologies...</strong></p>
         </div>
       ) : (
         <>

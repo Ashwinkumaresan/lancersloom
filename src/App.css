@@ -300,7 +300,7 @@ a:hover {
     width: 0;
   }
   to {
-    width: 212px; /* Adjust this based on text length */
+    width: 230px; /* Adjust this based on text length */
   }
 }
 

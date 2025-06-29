@@ -27,8 +27,8 @@ const Emailfp = () => {
         setEmailError("");
         setIsLoading(true);
 
-        console.log(email)
-        console.log(purpose)
+        //console.log(email)
+        //console.log(purpose)
         try {
             // Axios request to backend
             const res = await axios.post(
@@ -45,8 +45,8 @@ const Emailfp = () => {
             // Navigate to signup-otp page
             navigate("/forgotPassword-otp");
         } catch (error) {
-            console.log(error)
-            console.log(error.response)
+            //console.log(error)
+            //console.log(error.response)
             setEmailError("Please check, mail might already be registered");
         } finally {
             setIsLoading(false);

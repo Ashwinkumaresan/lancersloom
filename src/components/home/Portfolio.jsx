@@ -200,7 +200,7 @@ const Portfolio = () => {
           technologies: project.techStack.map((t) => t.tech),
           deadline: project.deadline
         }));
-        console.log(response.data);
+        //console.log(response.data);
         
         setProjects(formattedProjects);
       } catch (error) {
@@ -214,7 +214,7 @@ const Portfolio = () => {
   return (
     <section id="portfolio" className="p-10" style={{
       width:"100vw",
-      overflowX:"hidden" 
+      overflow:"hidden" 
     }}>
       <Container>
         <Row className="text-center my-5">
