@@ -276,7 +276,7 @@ const Hero = () => {
             <p className="display-6 m-0 text-white fw-bold" ref={(el) => (headingRefs.current[1] = el)}>Build a Landing Page</p>
 
             <p className="m-0 mt-2" style={{ color: "#A0A0A0" }} ref={(el) => (paraRef.current = el)}>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit a excepturi odio eius debitis placeat, ullam aperiam facilis in sint.
+              Request a live demo and effortlessly create stunning, conversion-ready landing pages for your brand
             </p>
             <div className="mt-3">
               <p className="m-0 text-white fw-bold" >Provide us with your email</p>
