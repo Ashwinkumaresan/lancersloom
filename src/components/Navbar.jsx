@@ -71,7 +71,7 @@ const ModernNavbar = () => {
               }} />
               <div>
                 <p className="m-0 p-0 fw-bold text-light ">Lancers<span className="text-primary">Loom</span></p>
-                <span className="m-0 p-0 d-block fs-12 text-light">Be Straight and Professional</span>
+                <span className="m-0 p-0 d-block fs-12 text-light">Be Straight, Be Professional</span>
               </div>
             </div>
           </Navbar.Brand>

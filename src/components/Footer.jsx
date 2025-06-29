@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import { FaTwitter, FaLinkedinIn, FaGithub, FaDribbble, FaInstagram, FaWhatsapp } from "react-icons/fa";
+import { FaTwitter, FaLinkedinIn, FaGithub, FaDribbble, FaInstagram, FaWhatsapp, FaMailBulk } from "react-icons/fa";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -55,8 +55,11 @@ const Footer = () => {
               <a href="https://wa.me/916374766864" target="_blank" rel="noopener noreferrer" className="me-3">
                 <FaWhatsapp />
               </a>
-              <a href="https://www.instagram.com/lancersloom/">
+              <a href="https://www.instagram.com/lancersloom/" target="_blank" className="me-3">
                 <FaInstagram />
+              </a>
+              <a href="mailto:lancersloom2025@gmail.com" target="_blank" rel="noopener noreferrer" className="me-3">
+                <FaMailBulk />
               </a>
             </div>
           </Col>
