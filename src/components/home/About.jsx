@@ -165,7 +165,7 @@ const About = () => {
                 </ul>
                 <p>At <strong>Lancersloom</strong>, we blend creativity with technology to help you stand out, upgrade your brand, and connect with your audience.
                 </p>
-                <button className="btn btn-light w-100" onClick={ () => navigate("/project-request")}>Let's Build Your's</button>
+                <button className="btn btn-dark w-100" onClick={ () => navigate("/project-request")}>Let's Build Your's</button>
               </div>
             </div>
           </div>

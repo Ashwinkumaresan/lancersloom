@@ -158,37 +158,28 @@ const Portfolio = () => {
   const cardsRef = useRef([]);
 
   useEffect(() => {
-  if (projects.length === 0) return;
+    if (projects.length === 0) return;
 
-  cardsRef.current.forEach((card) => {
-    const tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: card,
-        start: "top 85%",
-        toggleActions: "play none none none",
-      },
-    });
+    cardsRef.current.forEach((card) => {
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: card,
+          start: "top 85%",
+          toggleActions: "play none none none",
+        },
+      });
 
-    tl.from(card, {
-      opacity: 1,
-      y: 60,
-      skewX: 10,
-      rotate: 5,
-      duration: 0.6,
-      ease: "power3.out",
-    }).to(card, {
-      skewX: 0,
-      rotate: 0,
-      duration: 0.4,
-      ease: "expo.out",
+      tl.fromTo(card,
+        { opacity: 0, y: 50 },
+        { opacity: 1, y: 0, duration: 0.8, ease: "power3.out" }
+      );
     });
-  });
-}, [projects]);
+  }, [projects]);
 
 
 
   // api call
-  
+
   useEffect(() => {
     const fetchDataHome = async () => {
       try {
@@ -201,7 +192,7 @@ const Portfolio = () => {
           deadline: project.deadline
         }));
         //console.log(response.data);
-        
+
         setProjects(formattedProjects);
       } catch (error) {
         //console.error("Error fetching data:", error.response?.data || error.message);
@@ -213,8 +204,8 @@ const Portfolio = () => {
 
   return (
     <section id="portfolio" className="p-10" style={{
-      width:"100vw",
-      overflow:"hidden" 
+      width: "100vw",
+      overflow: "hidden"
     }}>
       <Container>
         <Row className="text-center my-5">
@@ -231,7 +222,7 @@ const Portfolio = () => {
               className="col-md-6 col-lg-4"
               ref={(el) => (cardsRef.current[index] = el)}
             >
-              <div className="card portfolio-item h-100">
+              <div className="card portfolio-item h-100 bg-light text-dark">
                 <img src={project.image} alt={project.title} className="card-img-top" />
                 <div className="card-body">
                   <h5 className="card-title">{project.title}</h5>

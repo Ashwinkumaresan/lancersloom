@@ -66,12 +66,12 @@ const ModernNavbar = () => {
         <Container>
           <Navbar.Brand href="/" className="brand">
             <div className="d-flex align-items-center">
-              <img src="logo.svg" alt="" style={{
+              <img src="logo2.png" alt="" style={{
                 width: "55px", height: "55px", objectFit: "contain"
               }} />
               <div>
-                <p className="m-0 p-0 fw-bold text-light ">Lancers<span className="text-primary">Loom</span></p>
-                <span className="m-0 p-0 d-block fs-12 text-light">Be Straight, Be Professional</span>
+                <p className="m-0 p-0 fw-bold text-dark ">Lancers<span className="text-primary">Loom</span></p>
+                <span className="m-0 p-0 d-block fs-12 text-dark">Be Straight, Be Professional</span>
               </div>
             </div>
           </Navbar.Brand>

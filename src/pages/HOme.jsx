@@ -22,11 +22,9 @@ export const Home = () => {
   return (
     <main>
       {loading ? (
-        <div className="d-flex flex-column justify-content-center align-items-center vh-100" style={{
-          backgroundColor: '#0D0D0D',
-        }}>
+        <div className="d-flex flex-column justify-content-center align-items-center vh-100">
           <img
-            src="/logo.png"
+            src="/logo2.png"
             alt="Loading..."
             className="floating-animation"
             style={{ width: '120px', height: '120px' }}

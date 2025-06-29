@@ -249,12 +249,12 @@ const Hero = () => {
         <div className="row">
           <h1 className="display-1 p-4 text-center fw-bold" ref={titleRef}>Make sure your profession is updated with the <span className="text-primary"> current technology </span></h1>
           <div className="text-center">
-            <button onClick={() => navigate("/project-request")} className="btn btn-light mx-2 px-4 py-2 my-2" ref={(el) => (buttonsRef.current[1] = el)}>Bring Your Idea to Life</button>
+            <button onClick={() => navigate("/project-request")} className="btn btn-dark mx-2 px-4 py-2 my-2" ref={(el) => (buttonsRef.current[1] = el)}>Bring Your Idea to Life</button>
             <button className="btn" style={{
               outline:"none",
               border:"none",
             }} ref={(el) => (buttonsRef.current[2] = el)}>
-              <a href="#portfolio" className="btn btn-outline-light mx-2 px-4 py-2 my-2">Browse Our Portfolio</a>
+              <a href="#portfolio" className="btn btn-outline-dark mx-2 px-4 py-2 my-2">Browse Our Portfolio</a>
             </button>
           </div>
           <img src="/Hero.svg" data-aos="fade-up" className="img-fluid" alt="Hero" ref={(el) => (imageRef.current = el)} />
@@ -269,17 +269,21 @@ const Hero = () => {
               className="img-fluid ms-md-5"
               alt="Offers"
               ref={(el) => (offerImgRef.current = el)}
+              style={{
+                width:"500px",
+                height:"400px",
+              }}
             />
           </div>
           <div className="col-12 col-md-6 p-3 p-md-5">
-            <p className="display-6 m-0 text-white fw-bold" ref={(el) => (headingRefs.current[0] = el)}>Get a Demo💪</p>
-            <p className="display-6 m-0 text-white fw-bold" ref={(el) => (headingRefs.current[1] = el)}>Build a Landing Page</p>
+            <p className="display-6 m-0 text-dark fw-bold" ref={(el) => (headingRefs.current[0] = el)}>Get a Demo💪</p>
+            <p className="display-6 m-0 text-dark fw-bold" ref={(el) => (headingRefs.current[1] = el)}>Build a Landing Page</p>
 
             <p className="m-0 mt-2" style={{ color: "#A0A0A0" }} ref={(el) => (paraRef.current = el)}>
               Request a live demo and effortlessly create stunning, conversion-ready landing pages for your brand
             </p>
             <div className="mt-3">
-              <p className="m-0 text-white fw-bold" >Provide us with your email</p>
+              <p className="m-0 text-dark fw-bold" >Provide us with your email</p>
               <form action="#" className="d-flex border rounded p-2">
                 <input
                   type="text"
